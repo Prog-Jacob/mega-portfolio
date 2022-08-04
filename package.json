@@ -5,16 +5,20 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --config .prettierrc \"**/*.*\" --write",
-    "lint": "eslint \"*.ts\""
+    "lint": "eslint \"**/*.ts\""
   },
   "keywords": [],
   "author": "Prog_Jacob <ahmed.abdelaziz.gm@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/jasmine": "^4.0.3",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1"
+    "jasmine": "^4.3.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   }
 }
