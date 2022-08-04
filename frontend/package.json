@@ -1,0 +1,13 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "Prog_Jacob <ahmed.abdelaziz.gm@gmail.com>",
+  "license": "MIT"
+}
