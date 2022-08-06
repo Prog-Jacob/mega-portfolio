@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+#profile-logo {
+    height: 20vh;
+    margin-top: 40vh;
+    stroke-dasharray: 1700;
+    animation: 2s fillSvg linear;
+}
+
+@keyframes fillSvg {
+    0% {
+        stroke-dashoffset: 1700;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+} 
