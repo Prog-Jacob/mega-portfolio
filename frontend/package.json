@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "Prog_Jacob <ahmed.abdelaziz.gm@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  }
 }
