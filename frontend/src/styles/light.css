@@ -1,0 +1,29 @@
+:root {
+    --intro-color: #E9DAC1;
+    --intro-color-rgb: 233, 218, 193;
+    --primary-color: #F7ECDE;
+    --secondary-color: grey;
+    --tertiary-color: #1f1f1f;
+
+    --main-heading-color-1: #1f1f1f;
+    --main-heading-color-2: #E9DAC1;
+    --main-paragraph-color: #1f1f1f;
+    --main-textnote-color: #1f1f1faa;
+
+    --font-selection-color: #1f1f1f;
+    --font-hover-color: #e85e46;
+    --font-cover-color: #E9DAC1;
+
+    --focus-filter: invert(100%) brightness(75%);
+    --celestial-shadow: yellow;
+    --theme-image: url(../docs/sun.png);
+    --star-color: #1f1f1f;
+}
+
+.svg {
+    filter: invert(100%);
+}
+
+.skill {
+    background: var(--intro-color);
+}

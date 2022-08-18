@@ -1,4 +1,6 @@
-let slideWithScroll = document.querySelectorAll('.scroll-slide');
+let slideWithScroll = document.querySelectorAll('.scroll-slide > *');
+let themeToggler = document.querySelector('.theme-celestial');
+let themeStylesheet = document.querySelector('#theme-styles');
 let shrinkButton = document.querySelector("#shrink-toggle");
 let ringSentences = document.querySelectorAll('.ring-text');
 let header = document.querySelector("header");
@@ -8,12 +10,13 @@ let mainClassList = main.classList;
 let timerOne = null;
 let timerTwo = null;
 
-document.querySelector('.navbar-toggler').addEventListener('click', function () {
-    headerClassList.toggle('header-toggler');
-});
+sessionStorage.clear();
+let theme = localStorage.getItem('theme');
+if (theme == null) setTheme('default');
+else setTheme(theme);
 
 
-for(let i = 0; i < 20; i++) {
+for(let i = 0; i < 25; i++) {
     const star = document.createElement('div');
 
     star.classList.add('star');
@@ -21,10 +24,9 @@ for(let i = 0; i < 20; i++) {
         --star-top: ${Math.floor(Math.random() * 100)}vh;
         --star-left: ${Math.floor(Math.random() * 100)}vw;
         --star-width: ${Math.floor((Math.random() + 1) * 10) / 50}rem;
-        --star-color: yellow;
         --star-x: ${Math.floor(Math.random() * 2) * 2 - 1};
         --star-y: ${Math.floor(Math.random() * 2) * 2 - 1};
-        --star-speed: ${Math.random() * 3};
+        --star-speed: ${120 / (0.1 + Math.random() * .5)}s;
         opacity: ${Math.random() * 0.7};
     `)
 
@@ -63,11 +65,20 @@ ringSentences.forEach(element => {
     element.innerHTML = newSentence;
 })
 
-main.addEventListener('scroll', function () {
-    let currentScroll = main.scrollTop;
+themeToggler.addEventListener('click', function () {
+    setTheme(this.dataset.theme);
+})
+
+document.querySelector('.navbar-toggler').addEventListener('click', function () {
+    headerClassList.toggle('header-toggler');
+});
+
+main.addEventListener('scroll', function (event) {
+    let currentScroll = this.scrollTop;
+    event.preventDefault();
 
     transformOnScroll(slideWithScroll, `translate(${-2 * currentScroll}px, ${currentScroll}px)`);
-    transformOnScroll(document.querySelectorAll('.water-wave'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
+    transformOnScroll(document.querySelectorAll('.water-wave *'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
 
     toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
     header.style.visibility = 'visible';
@@ -107,6 +118,15 @@ shrinkButton.addEventListener('click', function () {
 }
 );
 
+document.querySelectorAll('.hemisphere').forEach((element) => {
+    element.style.setProperty('--child-num', `${element.childElementCount}`);
+})
+
+orderElements(document.querySelectorAll('.show-text:nth-child(n-1)'), '--nth-child');
+orderElements(document.querySelectorAll('.hemisphere'), '--nth-parent');
+orderElements(document.querySelectorAll('.hemisphere:nth-child(1) .skill'), '--nth-child');
+orderElements(document.querySelectorAll('.hemisphere:nth-child(2) .skill'), '--nth-child');
+
 
 function toggleScrollbar(boxshadow, border, width) {
     document.documentElement.style.setProperty('--scroll-boxshadow', boxshadow || 'none');
@@ -116,11 +136,26 @@ function toggleScrollbar(boxshadow, border, width) {
 
 function transformOnScroll(parents, value) {
     parents.forEach(element => {
-        for (let i = 0; i < element.children.length; i++) {
-            let child = element.children[i];
-            child.style.transform = value;
-            // child.style.setProperty('transform', `rotate(${currentScroll}deg`);
-            // child.style.setProperty('transform', `scale(${1 - currentScroll / 500}`);
-        }
+        element.style.transform = value;
+        // child.style.setProperty('transform', `rotate(${currentScroll}deg`);
+        // child.style.setProperty('transform', `scale(${1 - currentScroll / 500}`);
     });
+}
+
+function orderElements(elements, variable) {
+    elements.forEach((element, index) =>
+        element.style.setProperty(variable, `${index}`)
+    );
+}
+
+function setTheme(theme) {
+    if (theme === 'default') {
+        themeStylesheet.href = 'styles/light.css';
+        themeToggler.dataset.theme = 'light';
+    } else {
+        themeStylesheet.href = '#';
+        themeToggler.dataset.theme = 'default';
+    }
+
+    localStorage.setItem('theme', theme);
 }

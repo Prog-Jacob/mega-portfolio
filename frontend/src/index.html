@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Abdelaziz | Portfolio</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link id="theme-styles" rel="stylesheet" href="#">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -14,6 +15,10 @@
 </head>
 
 <body id="body">
+    <button data-theme="default" class="theme-celestial" aria-label="Theme toggler button">
+        <div></div>
+    </button>
+
     <div id="intro-container">
         <svg id="intro-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
             id="Layer_1" x="0px" y="0px" viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;"
@@ -29,17 +34,18 @@
 
     <header class="navbar navbar-dark">
         <a id="expand-toggle" class="navbar-brand active" aria-current="page" href="#"><img id="header-logo"
-                src="./docs/user_logo.svg" alt="The logo of the portfolio owner" class="navbar-brand" height="80px"></a>
+                src="./docs/user_logo.svg" alt="The logo of the portfolio owner" class="navbar-brand  svg"
+                height="80px"></a>
         <button id="shrink-toggle">
-            <img id="header-logo" src="./docs/user_logo.svg" alt="The logo of the portfolio owner" class="navbar-brand"
-                height="80px">
+            <img id="header-logo" src="./docs/user_logo.svg" alt="The logo of the portfolio owner"
+                class="navbar-brand  svg" height="80px">
         </button>
         <nav class="navbar navbar-expand-md nav-bar">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon svg"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -57,7 +63,7 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="link" action="#">
-                        <button class="btn btn-outline-info" type="submit">Resume</button>
+                        <button class="btn btn-outline-info svg" type="submit">Resume</button>
                     </form>
                 </div>
             </div>
@@ -65,7 +71,7 @@
     </header>
 
     <main>
-        <section class="scroll-slide">
+        <section class="scroll-slide home-section">
             <div class="show-text">
                 <h1 class="ring-text heading">Hi,<br>I'm AHMED</h1>
             </div>
@@ -82,7 +88,30 @@
                 <button>Let's Start</button>
             </div>
         </section>
-        <section class="a"></section>
+        <section class="flex-section">
+            <div class="">
+            </div>
+            <div class="container-3d">
+                <div class="sphere">
+                    <div class="hemisphere">
+                      <div class="skill">Node.js</div>
+                      <div class="skill">Bootstrap</div>
+                      <div class="skill">React</div>
+                      <div class="skill">HTML</div>
+                      <div class="skill">CSS</div>
+                      <div class="skill">Git</div>
+                    </div>
+                    <div class="hemisphere">
+                      <div class="skill">Typescript</div>
+                      <div class="skill">Express</div>
+                      <div class="skill">Python</div>
+                      <div class="skill">CI/CD</div>
+                      <div class="skill">SQL</div>
+                      <div class="skill">AWS</div>
+                    </div>
+                  </div>
+            </div>
+        </section>
         <section></section>
         <section class="a"></section>
     </main>
@@ -92,35 +121,35 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="https://github.com/Prog-Jacob/"><img src="./docs/github_logo.svg"
-                            alt="Author's Github profile link" class="navbar-brand" width="25px"></a>
+                            alt="Author's Github profile link" class="navbar-brand svg" width="25px"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.linkedin.com/in/ahmd-abdelaziz/"><img
-                            src="./docs/linkedin_logo.svg" alt="Author's LinkedIn profile link" class="navbar-brand"
+                            src="./docs/linkedin_logo.svg" alt="Author's LinkedIn profile link" class="navbar-brand svg"
                             width="25px"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://codepen.io/Prog_Jacob"><img src="./docs/codepen_logo.svg"
-                            alt="Author's CodePen profile link" class="navbar-brand" width="25px"></a>
+                            alt="Author's CodePen profile link" class="navbar-brand svg" width="25px"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://lichess.org/@/Prog_Jacob"><img src="./docs/lichess_logo.svg"
-                            alt="Author's Lichess profile link" class="navbar-brand" width="25px"></a>
+                            alt="Author's Lichess profile link" class="navbar-brand svg" width="25px"></a>
                 </li>
                 <li class="copy-contact-info">
                     <a class="nav-link contact-logo" href="mailto://ahmed.abdelaziz.gm@gmail.com/"><img
-                            src="./docs/email_logo.svg" alt="Author's email" class="navbar-brand" width="25px"></a>
+                            src="./docs/email_logo.svg" alt="Author's email" class="navbar-brand svg" width="25px"></a>
                     <span class="contact-info">Ahmed.Abdelaziz.GM@gmail.com</span>
-                    <button type="button" class="copy-button">
+                    <button type="button" class="copy-button svg">
                         <img src="./docs/copy_icon.svg" alt="Click to copy author's email icon" class="navbar-brand"
                             width="25px">
                     </button>
                 </li>
                 <li class="copy-contact-info cci2">
                     <a class="nav-link contact-logo" href="tel://+201016538863/"><img src="./docs/phone_logo.svg"
-                            alt="Author's phone number" class="navbar-brand" width="25px"></a>
+                            alt="Author's phone number" class="navbar-brand svg" width="25px"></a>
                     <span class="contact-info">+20 101 6538 863</span>
-                    <button type="button" class="copy-button">
+                    <button type="button" class="copy-button svg">
                         <img src="./docs/copy_icon.svg" alt="Click to copy author's phone number" class="navbar-brand"
                             width="25px">
                     </button>
