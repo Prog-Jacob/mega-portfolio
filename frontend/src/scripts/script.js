@@ -10,13 +10,12 @@ let mainClassList = main.classList;
 let timerOne = null;
 let timerTwo = null;
 
-sessionStorage.clear();
 let theme = localStorage.getItem('theme');
 if (theme == null) setTheme('default');
 else setTheme(theme);
 
 
-for(let i = 0; i < 25; i++) {
+for (let i = 0; i < 25; i++) {
     const star = document.createElement('div');
 
     star.classList.add('star');
@@ -73,16 +72,32 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     headerClassList.toggle('header-toggler');
 });
 
+document.addEventListener('mouseup', function (event) {
+    const bullet = document.createElement('div');
+
+    bullet.classList.add('bullet');
+    bullet.setAttribute('style', `
+    top: ${event.clientY}px;
+    left: ${event.clientX}px;
+    --h-distance: -${event.clientX}px;
+    --v-distance: -${event.clientX * Math.tan(40 * Math.PI / 180)}px;
+    --bullet-timing: ${event.clientX}ms;
+    `)
+
+    document.documentElement.appendChild(bullet);
+    setTimeout(function () {
+        bullet.remove();
+    }, 4000)
+})
+
 main.addEventListener('scroll', function (event) {
-    let currentScroll = this.scrollTop;
     event.preventDefault();
+    let currentScroll = this.scrollTop;
 
     transformOnScroll(slideWithScroll, `translate(${-2 * currentScroll}px, ${currentScroll}px)`);
     transformOnScroll(document.querySelectorAll('.water-wave *'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
 
     toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
-    header.style.visibility = 'visible';
-    main.style.visibility = 'visible';
 
     if (timerTwo == null) {
         if (headerClassList.contains('expand-header')) headerClassList.remove('expand-header');
@@ -137,8 +152,6 @@ function toggleScrollbar(boxshadow, border, width) {
 function transformOnScroll(parents, value) {
     parents.forEach(element => {
         element.style.transform = value;
-        // child.style.setProperty('transform', `rotate(${currentScroll}deg`);
-        // child.style.setProperty('transform', `scale(${1 - currentScroll / 500}`);
     });
 }
 

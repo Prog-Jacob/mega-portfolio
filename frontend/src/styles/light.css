@@ -20,10 +20,23 @@
     --star-color: #1f1f1f;
 }
 
+* {
+    cursor: url(../docs/astronaut_icon_light.svg), default;
+    cursor: url(../docs/astronaut_icon_light.svg), pointer !important;
+}
+
 .svg {
     filter: invert(100%);
 }
 
 .skill {
     background: var(--intro-color);
+}
+
+.skill>span {
+    background: var(--intro-color);
+}
+
+.bullet {
+    background: brown;
 }
