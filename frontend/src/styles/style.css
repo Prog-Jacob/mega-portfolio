@@ -20,7 +20,7 @@
 
 .theme-celestial {
     position: fixed;
-    z-index: 700;
+    z-index: 850;
     right: 10vw;
     top: 20vh;
     border-radius: 3rem;
@@ -152,6 +152,7 @@ header>a:focus {
 }
 
 .expand-header {
+    visibility: visible;
     height: 100px;
     animation: shrinkHeader 1s linear reverse;
 }
@@ -166,6 +167,27 @@ header>a:focus {
 
 .header-toggler {
     height: 100vh;
+    overflow: hidden;
+}
+
+.header-toggler * {
+    display: block !important;
+    margin: auto;
+}
+
+.header-toggler>*:not(:last-child) {
+    display: none !important;
+}
+
+.header-toggler .nav-item {
+    display: flex !important;
+    background: rgba(var(--intro-color-rgb), .25);
+    width: 150px;
+    margin-top: 10px;
+}
+
+.header-toggler .nav-link {
+    filter: drop-shadow(0 0 .5rem var(--main-paragraph-color));
 }
 
 .expand-view {
@@ -174,6 +196,7 @@ header>a:focus {
 }
 
 .shrink-view {
+    visibility: visible;
     animation: .5s expandView linear reverse backwards;
 }
 
@@ -301,7 +324,7 @@ section {
     background: transparent;
     margin: 0 auto;
     right: 20px;
-    visibility: hidden;
+    opacity: 0;
     animation: slide .5s 6s ease-in-out forwards;
 }
 
@@ -358,7 +381,7 @@ section {
 
 .about-me {
     border: white solid;
-    
+
 }
 
 .bubble {
@@ -580,7 +603,6 @@ section {
 
 * {
     scrollbar-color: var(--secondary-color) rgba(var(--intro-color-rgb), 0.5);
-    ;
     scrollbar-width: var(--scroll-width);
 }
 

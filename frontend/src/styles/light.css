@@ -40,3 +40,11 @@
 .bullet {
     background: brown;
 }
+
+.header-toggler .nav-link {
+    filter: none;
+}
+
+.header-toggler .nav-item {
+    outline: solid 1px var(--tertiary-color);
+}
