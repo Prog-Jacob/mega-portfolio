@@ -43,12 +43,11 @@
     animation: slide 1.5s 6s ease-in forwards;
 }
 
-.theme-celestial div:hover {
-    filter: brightness(75%)
-}
-
 .theme-celestial:focus {
     outline: none;
+}
+
+.theme-celestial:active {
     transform: scale(1.1);
 }
 
@@ -126,6 +125,9 @@ header a:hover {
 
 header>a:focus {
     outline: none;
+}
+
+header>a:active {
     transform: scale(1.1);
     filter: var(--focus-filter);
 }
@@ -636,6 +638,12 @@ section {
 
     #footer nav ul li {
         margin: auto;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .theme-celestial div:hover {
+        filter: brightness(75%)
     }
 }
 

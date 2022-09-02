@@ -14,8 +14,7 @@ buttons.forEach(button => {
         const mainWidth = getComputedStyle(main).getPropertyValue('--width');
         const role = button.dataset.role;
 
-        if (role === 'back') window.history.back();
-        else if (role === 'magnify' && mainWidth != 100) maintainWidth(5);
+        if (role === 'magnify' && mainWidth != 100) maintainWidth(5);
         else if (role === 'minify' && main.offsetWidth > 300) maintainWidth(-5);
         else if (role === 'download') {
             resume.click();
@@ -38,7 +37,7 @@ titles.forEach((title) => {
 
             if (counter === 19) clearInterval(heightTransition);
             counter++;
-        }, 10);
+        }, 5);
     })
 })
 
