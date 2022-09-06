@@ -3,6 +3,7 @@
 }
 
 :root {
+    --width: 100;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -12,10 +13,7 @@ body,
 :root {
     margin: 0;
     padding: 0;
-    background: #1f1f1f;
-}
-
-body {
+    background: black;
     overflow-x: hidden;
 }
 
@@ -33,15 +31,15 @@ body {
 }
 
 header {
-    z-index: 1000;
     width: 100%;
     padding: 25px auto;
-    background: #0f0f0f;
+    background: linear-gradient(to bottom, black, #0f0f0f);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 15px 0;
-    box-shadow: 0 -10px 20px grey;
+    box-shadow: 0 -1px 10px grey;
+    z-index: 0;
 }
 
 header button {
@@ -69,10 +67,10 @@ header>*:first-child {
 }
 
 main {
-    --width: 100;
     --computed-width: 400px;
     width: calc(1% * var(--width));
     background: #f1f1f1;
+    box-shadow: 0 1px 10px grey;
 }
 
 section {
@@ -86,10 +84,13 @@ section:first-child {
     box-shadow: 0 1px 20px #0f0f0f;
 }
 
+a {
+    text-decoration: none;
+}
+
 :where(section:first-child *) {
     color: #f1f1f1cc;
     font-size: min(calc(.03 * var(--computed-width) * 1px), 1.5rem);
-    text-decoration: none;
 }
 
 section:first-child>div {
@@ -99,11 +100,15 @@ section:first-child>div {
     justify-content: space-between;
 }
 
-section>h1 {
+h1 {
     font-size: min(calc(.05 * var(--computed-width) * 1px), 3rem);
     color: #f1f1f1;
     margin-bottom: 1rem;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h5 {
+    font-size: min(calc(.02 * var(--computed-width) * 1px), 1rem);
 }
 
 section:last-child {
@@ -144,6 +149,10 @@ div:nth-child(5) .title {
     justify-content: space-between;
 }
 
+.toggle-window+div {
+    height: 0px;
+}
+
 div:nth-child(2) .title+div:nth-child(2) div {
     text-align: center;
 }
@@ -159,24 +168,46 @@ div:nth-child(2) .title+div:nth-child(2) div:nth-child(2) {
     margin: 5px;
 }
 
-.title:first-child+div {
+div:first-child .title+div {
     text-align: justify;
 }
 
-/* Experimental: Transfer to main page */
+p>span:first-child {
+    width: 40%;
+    display: inline-block;
+}
 
-.tooltiptext {
-    display: none;
-    opacity: 0;
-    position: absolute;
-    background: #0f0f0f;
-    transform: translate(0, 125%);
-    padding: 10px;
-    border-radius: 0 5px 5px 5px;
-    outline: 2px solid #E9DAC1;
-    color: #F7ECDE;
-    font-size: 1rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.work-experience p>span:first-child {
+    width: 50%;
+}
+
+ul {
+    margin-left: 5%;
+}
+
+li {
+    list-style-type: circle;
+    font-size: min(calc(.02 * var(--computed-width) * 1px), 1.3rem);
+    letter-spacing: -.25px;
+}
+
+.projects>div *:not(li, ul) {
+    display: inline-block;
+    color: black;
+}
+
+.projects>div:not(:last-child) a {
+    width: min(calc(.43 * var(--computed-width) * 1px), 26rem);
+    display: flex;
+    align-items: center;
+}
+
+.projects>div:not(:last-child) h3 {
+    flex: 1 1 auto;
+    text-align: justify;
+    text-align-last: justify;
+    width: 100;
+    margin-right: .5ch;
 }
 
 @keyframes fadeIn {
@@ -188,10 +219,5 @@ div:nth-child(2) .title+div:nth-child(2) div:nth-child(2) {
 @media (hover: hover) and (pointer: fine) {
     .title:hover {
         filter: invert(100%);
-    }
-
-    .tooltip:hover .tooltiptext {
-        display: inline-block;
-        animation: fadeIn 1s 1s linear forwards;
     }
 }

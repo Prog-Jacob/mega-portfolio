@@ -25,25 +25,13 @@ buttons.forEach(button => {
 
 titles.forEach((title) => {
     title.addEventListener('click', function () {
-        const toggleWindow = title.parentElement.querySelector('div:last-child');
-        toggleWindow.classList.toggle('toggle-window');
-        let condition = toggleWindow.classList.contains('toggle-window');
-        let height = parseInt(getComputedStyle(toggleWindow).getPropertyValue('height').replace('px', ''));
-        let counter = 0;
-
-        const heightTransition = setInterval(function () {
-            if (condition) toggleWindow.style.height = `${height * (1 - 0.05 * (counter + 1))}px`;
-            else toggleWindow.style.height = 'auto';
-
-            if (counter === 19) clearInterval(heightTransition);
-            counter++;
-        }, 5);
+        title.classList.toggle('toggle-window');
     })
 })
 
 
 function maintainWidth(num) {
-    const mainWidth = getComputedStyle(main).getPropertyValue('--width');
-    main.style.setProperty('--width', `${Number(mainWidth) + num}`);
+    const mainWidth = getComputedStyle(document.documentElement).getPropertyValue('--width');
+    document.documentElement.style.setProperty('--width', `${Number(mainWidth) + num}`);
     main.style.setProperty('--computed-width', main.offsetWidth);
 }
