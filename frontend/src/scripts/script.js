@@ -1,4 +1,4 @@
-let slideWithScroll = document.querySelectorAll('.scroll-slide > *');
+// let slideWithScroll = document.querySelectorAll('.scroll-slide > *');
 let themeToggler = document.querySelector('.theme-celestial');
 let themeStylesheet = document.querySelector('#theme-styles');
 let shrinkButton = document.querySelector("#shrink-toggle");
@@ -11,7 +11,9 @@ let timerOne = null;
 let timerTwo = null;
 
 let theme = localStorage.getItem('theme');
-if (theme == null) setTheme('default');
+if (theme == null) {
+    window.matchMedia("(prefers-color-scheme: dark)").matches ? setTheme("default") : setTheme("light");
+}
 else setTheme(theme);
 
 
@@ -92,10 +94,10 @@ document.addEventListener('mouseup', function (event) {
 
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
-    let currentScroll = this.scrollTop;
+    // let currentScroll = this.scrollTop;
 
-    transformOnScroll(slideWithScroll, `translate(${-2 * currentScroll}px, ${currentScroll}px)`);
-    transformOnScroll(document.querySelectorAll('.water-wave *'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
+    // transformOnScroll(slideWithScroll, `translate(${-2 * currentScroll}px, ${currentScroll}px)`);
+    // transformOnScroll(document.querySelectorAll('.water-wave *'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
 
     toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
 
@@ -149,11 +151,11 @@ function toggleScrollbar(boxshadow, border, width) {
     document.documentElement.style.setProperty('--scroll-width', width || 'none');
 }
 
-function transformOnScroll(parents, value) {
-    parents.forEach(element => {
-        element.style.transform = value;
-    });
-}
+// function transformOnScroll(parents, value) {
+//     parents.forEach(element => {
+//         element.style.transform = value;
+//     });
+// }
 
 function orderElements(elements, variable) {
     elements.forEach((element, index) =>
@@ -164,9 +166,15 @@ function orderElements(elements, variable) {
 function setTheme(theme) {
     if (theme === 'default') {
         themeStylesheet.href = 'styles/light.css';
+        document
+            .querySelector('meta[name="theme_color"]')
+            .setAttribute("content", "#11223E");
         themeToggler.dataset.theme = 'light';
     } else {
         themeStylesheet.href = '#';
+        document
+            .querySelector('meta[name="theme_color"]')
+            .setAttribute("content", "#F7ECDE");
         themeToggler.dataset.theme = 'default';
     }
 
