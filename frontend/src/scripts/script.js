@@ -169,11 +169,29 @@ function setTheme(theme) {
         document
             .querySelector('meta[name="theme_color"]')
             .setAttribute("content", "#11223E");
+        document
+            .querySelector('meta[name="msapplication-TileColor"]')
+            .setAttribute("content", "#11223E");
+        document
+            .querySelector('meta[name="msapplication-navbutton-color"]')
+            .setAttribute("content", "#11223E");
+        document
+            .querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')
+            .setAttribute("content", "#11223E");
         themeToggler.dataset.theme = 'light';
     } else {
         themeStylesheet.href = '#';
-        document
+            document
             .querySelector('meta[name="theme_color"]')
+            .setAttribute("content", "#F7ECDE");
+        document
+            .querySelector('meta[name="msapplication-TileColor"]')
+            .setAttribute("content", "#F7ECDE");
+        document
+            .querySelector('meta[name="msapplication-navbutton-color"]')
+            .setAttribute("content", "#F7ECDE");
+        document
+            .querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')
             .setAttribute("content", "#F7ECDE");
         themeToggler.dataset.theme = 'default';
     }

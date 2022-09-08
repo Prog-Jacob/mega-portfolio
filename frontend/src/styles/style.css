@@ -223,7 +223,6 @@ main {
     width: var(--star-width);
     font-size: 12em;
     z-index: 1000;
-    animation: var(--star-speed) movingStars linear infinite;
 }
 
 .star:before,
@@ -644,6 +643,12 @@ section {
 @media (hover: hover) and (pointer: fine) {
     .theme-celestial div:hover {
         filter: brightness(75%)
+    }
+}
+
+@media (pointer: fine) {
+    .star {
+        animation: var(--star-speed) movingStars linear infinite;
     }
 }
 
