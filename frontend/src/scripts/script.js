@@ -74,7 +74,7 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     headerClassList.toggle('header-toggler');
 });
 
-if (window.matchMedia('(pointer: fine)')) {
+if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mouseup', function (event) {
         const bullet = document.createElement('div');
     
