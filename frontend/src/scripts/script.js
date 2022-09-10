@@ -16,6 +16,31 @@ if (theme == null) {
 }
 else setTheme(theme);
 
+document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
+    let container3d = document.querySelector('.container-3d');
+    let resetRotation = null;
+
+    hemisphere.addEventListener('click', () => {
+        clearTimeout(resetRotation);
+        let nthParent = Number(getComputedStyle(hemisphere)
+            .getPropertyValue('--nth-parent'));
+        let rotationNum = Number(getComputedStyle(container3d)
+            .getPropertyValue('--rotate-on-click'));
+        rotationNum = (nthParent * -2 + 1) * 20 + rotationNum;
+
+        container3d.setAttribute('style', `
+                --rotate-on-click: ${rotationNum};
+                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
+            `);
+
+        resetRotation = setTimeout(function () {
+            container3d.setAttribute('style', `
+                --rotate-on-click: 0;
+                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
+            `);
+        }, Math.abs(rotationNum) * 50)
+    });
+});
 
 for (let i = 0; i < 25; i++) {
     const star = document.createElement('div');
@@ -77,7 +102,7 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
 if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mouseup', function (event) {
         const bullet = document.createElement('div');
-    
+
         bullet.classList.add('bullet');
         bullet.setAttribute('style', `
         top: ${event.clientY}px;
@@ -86,7 +111,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
         --v-distance: -${event.clientX * Math.tan(40 * Math.PI / 180)}px;
         --bullet-timing: ${event.clientX}ms;
         `)
-    
+
         document.documentElement.appendChild(bullet);
         setTimeout(function () {
             bullet.remove();
@@ -183,7 +208,7 @@ function setTheme(theme) {
         themeToggler.dataset.theme = 'light';
     } else {
         themeStylesheet.href = '#';
-            document
+        document
             .querySelector('meta[name="theme_color"]')
             .setAttribute("content", "#F7ECDE");
         document
