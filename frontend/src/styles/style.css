@@ -367,21 +367,36 @@ section {
 }
 
 .flex-section {
+    min-height: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20vh 0;
-
+    justify-content: space-evenly;
+    padding: 5vh 0;
 }
 
 .flex-section>* {
-    min-height: 50vh;
-    min-width: 300px;
-    margin: 2rem auto 0;
+    --diameter: clamp(320px, 40vw, 800px);
+    width: var(--diameter);
 }
 
 .about-me {
+    text-align: justify;
+    flex-direction: column;
+}
 
+.about-me p {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.about-me p:first-line {
+    text-decoration: overline var(--star-color);
+}
+
+.about-me p:first-letter {
+    color: var(--star-color);
+    font-weight: bold;
 }
 
 .bubble {
@@ -393,14 +408,17 @@ section {
     width: fit-content;
     font-weight: bold;
     animation: bubble 10s infinite linear;
+    color: var(--star-color);
 }
 
 .container-3d {
-    --diameter: clamp(300px, 35vw, 700px);
+    --rotate-on-click: 0;
+    --diameter: clamp(250px, 35vw, 700px);
     transform-style: preserve-3d;
     perspective: calc(var(--diameter) * 5);
     height: var(--diameter);
     width: var(--diameter);
+    transform: rotateX(calc(var(--rotate-on-click) * 1deg));
 }
 
 .sphere {
@@ -413,6 +431,7 @@ section {
     left: 0;
     top: 0;
     animation: rotate 20s infinite linear;
+    outline: solid purple;
 }
 
 .hemisphere {
@@ -424,6 +443,7 @@ section {
     transform-style: preserve-3d;
     transform-origin: 50% 50%;
     transform: rotateX(90deg);
+    outline: solid var(--star-color);
 }
 
 .hemisphere:nth-child(2) {
@@ -445,6 +465,7 @@ section {
     padding: 0 1rem;
     border-radius: 50px;
     background: rgba(var(--intro-color-rgb), .25);
+    transition: transform 1s;
 }
 
 #footer {
@@ -785,8 +806,20 @@ section {
 }
 
 @keyframes rotate {
+    25% {
+        transform: rotateY(180deg) rotateX(20deg);
+    }
+
+    50% {
+        transform: rotateY(360deg) rotateX(0deg);
+    }
+
+    75% {
+        transform: rotateY(540deg) rotateX(-20deg);
+    }
+
     to {
-        transform: rotateY(360deg);
+        transform: rotateY(720deg) rotateX(0deg);
     }
 }
 
