@@ -134,6 +134,7 @@ header>a:active {
 
 .roll-header {
     visibility: visible;
+    will-change: transform, width;
     animation: shrinkHeader 1s linear forwards;
 }
 
@@ -146,6 +147,7 @@ header>a:active {
     border: none;
     background: transparent;
     display: block !important;
+    will-change: transform;
     animation: rollHeader .25s linear 4, rubberBand 1.5s 1.5s;
 }
 
@@ -156,7 +158,10 @@ header>a:active {
 .expand-header {
     visibility: visible;
     height: 100px;
-    animation: shrinkHeader 1s linear reverse;
+    box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
+    background-color: transparent !important;
+    will-change: transform, width, box-shadow;
+    animation: shrinkHeader 1s linear reverse, boxShadow 1.5s .5s linear forwards;
 }
 
 .expand-header #shrink-toggle {
@@ -733,9 +738,9 @@ section {
 }
 
 @keyframes shrinkHeader {
-    1% {
-        border-radius: 50px;
+    from {
         box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
+        border-radius: 50px;
     }
 
     90% {
@@ -754,6 +759,12 @@ section {
 @keyframes expandView {
     to {
         height: 100vh;
+    }
+}
+
+@keyframes boxShadow {
+    to {
+        box-shadow: none;
     }
 }
 

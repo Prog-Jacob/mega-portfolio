@@ -13,34 +13,7 @@ let timerTwo = null;
 let theme = localStorage.getItem('theme');
 if (theme == null) {
     window.matchMedia("(prefers-color-scheme: dark)").matches ? setTheme("default") : setTheme("light");
-}
-else setTheme(theme);
-
-document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
-    let container3d = document.querySelector('.container-3d');
-    let resetRotation = null;
-
-    hemisphere.addEventListener('click', () => {
-        clearTimeout(resetRotation);
-        let nthParent = Number(getComputedStyle(hemisphere)
-            .getPropertyValue('--nth-parent'));
-        let rotationNum = Number(getComputedStyle(container3d)
-            .getPropertyValue('--rotate-on-click'));
-        rotationNum = (nthParent * -2 + 1) * 20 + rotationNum;
-
-        container3d.setAttribute('style', `
-                --rotate-on-click: ${rotationNum};
-                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
-            `);
-
-        resetRotation = setTimeout(function () {
-            container3d.setAttribute('style', `
-                --rotate-on-click: 0;
-                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
-            `);
-        }, Math.abs(rotationNum) * 50)
-    });
-});
+} else setTheme(theme);
 
 for (let i = 0; i < 25; i++) {
     const star = document.createElement('div');
@@ -99,6 +72,32 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     headerClassList.toggle('header-toggler');
 });
 
+document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
+    let container3d = document.querySelector('.container-3d');
+    let resetRotation = null;
+
+    hemisphere.addEventListener('click', () => {
+        clearTimeout(resetRotation);
+        let nthParent = Number(getComputedStyle(hemisphere)
+            .getPropertyValue('--nth-parent'));
+        let rotationNum = Number(getComputedStyle(container3d)
+            .getPropertyValue('--rotate-on-click'));
+        rotationNum = (nthParent * -2 + 1) * 20 + rotationNum;
+
+        container3d.setAttribute('style', `
+                --rotate-on-click: ${rotationNum};
+                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
+            `);
+
+        resetRotation = setTimeout(function () {
+            container3d.setAttribute('style', `
+                --rotate-on-click: 0;
+                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
+            `);
+        }, Math.abs(rotationNum) * 50)
+    });
+});
+
 if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mouseup', function (event) {
         const bullet = document.createElement('div');
@@ -121,11 +120,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
-    // let currentScroll = this.scrollTop;
-
-    // transformOnScroll(slideWithScroll, `translate(${-2 * currentScroll}px, ${currentScroll}px)`);
-    // transformOnScroll(document.querySelectorAll('.water-wave *'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
-
+    
     toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
 
     if (timerTwo == null) {
@@ -142,7 +137,7 @@ main.addEventListener('scroll', function (event) {
 
     timerOne = setTimeout(function () {
         toggleScrollbar();
-    }, 3000);
+    }, 2000);
 }, false);
 
 shrinkButton.addEventListener('click', function () {
