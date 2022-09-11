@@ -679,6 +679,15 @@ section {
     }
 }
 
+@media not (pointer: fine) {
+    .sphere {
+        animation: none;
+    }
+    .container-3d {
+        animation: rotate 20s infinite linear;
+    }
+}
+
 @font-face {
     font-family: "Formula Serial Bold";
     src: url("./formula-serial-bold.ttf");
