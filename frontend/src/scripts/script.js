@@ -118,7 +118,6 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
-
     toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
 
     if (headerClassList.contains('expand-header')) headerClassList.remove('expand-header');
@@ -133,7 +132,7 @@ main.addEventListener('scroll', function (event) {
 
     timer = setTimeout(function () {
         toggleScrollbar();
-    }, 2000);
+    }, 1000);
 }, false);
 
 shrinkButton.addEventListener('click', function () {

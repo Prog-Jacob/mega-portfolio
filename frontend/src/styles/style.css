@@ -136,6 +136,8 @@ header>a:active {
     visibility: visible;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    will-change: transform, width;
+    animation: shrinkHeader 1s linear forwards;
 }
 
 .roll-header>* {
@@ -159,7 +161,6 @@ header>a:active {
     visibility: visible;
     height: 100px;
     box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
-    background-color: transparent !important;
     will-change: transform, width, box-shadow;
     animation: shrinkHeader 1s linear reverse, boxShadow 1.5s .5s linear forwards;
 }
