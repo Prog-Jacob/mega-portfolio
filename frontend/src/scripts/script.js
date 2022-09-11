@@ -6,6 +6,7 @@ let header = document.querySelector("header");
 let headerClassList = header.classList;
 let main = document.querySelector("main");
 let mainClassList = main.classList;
+let scrollbarToggler = false;
 let timer = null;
 
 let theme = localStorage.getItem('theme');
@@ -118,20 +119,28 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
-    toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
+    if (!scrollbarToggler) {
+        toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
+        scrollbarToggler = true;
+    }
 
-    if (headerClassList.contains('expand-header')) headerClassList.remove('expand-header');
-    header.offsetWidth;
+    if (headerClassList.contains('expand-header')) {
+        headerClassList.remove('expand-header');
+        header.offsetWidth;
+    }
     if (!(headerClassList.contains('roll-header'))) headerClassList.add('roll-header');
 
-    if (mainClassList.contains('shrink-view')) mainClassList.remove('shrink-view');
-    main.offsetWidth;
+    if (mainClassList.contains('shrink-view')) {
+        mainClassList.remove('shrink-view');
+        main.offsetWidth;
+    }
     if (!(mainClassList.contains('expand-view'))) mainClassList.add('expand-view');
 
     clearTimeout(timer);
 
     timer = setTimeout(function () {
         toggleScrollbar();
+        scrollbarToggler = false;
     }, 1000);
 }, false);
 
