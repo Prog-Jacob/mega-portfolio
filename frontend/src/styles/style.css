@@ -96,6 +96,8 @@ header {
     width: 100vw;
     z-index: 800;
     visibility: hidden;
+    border-radius: 50px;
+    overflow: hidden;
     animation: .5s slide 3s ease-in-out forwards;
 }
 
@@ -132,11 +134,14 @@ header>a:active {
     filter: var(--focus-filter);
 }
 
-.roll-header {
+.roll-header,
+.expand-header {
     visibility: visible;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
     will-change: transform, width;
+}
+
+.roll-header {
     animation: shrinkHeader 1s linear forwards;
 }
 
@@ -158,10 +163,7 @@ header>a:active {
 }
 
 .expand-header {
-    visibility: visible;
     height: 100px;
-    box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
-    will-change: transform, width, box-shadow;
     animation: shrinkHeader 1s linear reverse, boxShadow 1.5s .5s linear forwards;
 }
 
@@ -214,7 +216,7 @@ main {
     bottom: 0;
     width: 100vw;
     height: 100vh;
-    /* scroll-snap-type: y mandatory; */
+    scroll-snap-type: y mandatory;
     overflow-x: hidden;
     overflow-y: auto;
     visibility: hidden;
@@ -249,8 +251,8 @@ main {
 }
 
 section {
-    /* scroll-snap-align: start; */
-    min-height: 100%;
+    scroll-snap-align: start;
+    min-height: 100vh;
     width: 100vw;
 }
 
@@ -309,7 +311,8 @@ section {
 .text-note {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--main-textnote-color);
-    font-size: max(1rem, 2vw);
+    line-height: 1.2em;
+    font-size: max(.8rem, 2vw);
     font-style: italic;
 }
 
@@ -373,7 +376,6 @@ section {
 }
 
 .flex-section {
-    min-height: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -392,16 +394,16 @@ section {
 }
 
 .about-me p {
-    margin: 10px 0;
+    margin: 10px 0 20px;
     padding: 10px;
 }
 
 .about-me p:first-line {
-    text-decoration: overline var(--star-color);
+    text-decoration: overline var(--tertiary-color);
 }
 
 .about-me p:first-letter {
-    color: var(--star-color);
+    color: var(--tertiary-color);
     font-weight: bold;
 }
 
@@ -414,14 +416,14 @@ section {
     width: fit-content;
     font-weight: bold;
     animation: bubble 10s infinite linear;
-    color: var(--star-color);
+    color: var(--tertiary-color);
 }
 
 .container-3d {
     --rotate-on-click: 0;
     --diameter: clamp(250px, 35vw, 700px);
     transform-style: preserve-3d;
-    perspective: calc(var(--diameter) * 5);
+    perspective: 10000px;
     height: var(--diameter);
     width: var(--diameter);
     transform: rotateX(calc(var(--rotate-on-click) * 1deg));
@@ -639,7 +641,6 @@ section {
     text-shadow: .01em .01em;
 }
 
-
 /* ================================================================================================================== */
 @media (max-width: 767px) {
     .flex-section {
@@ -739,21 +740,13 @@ section {
 }
 
 @keyframes shrinkHeader {
-    from {
-        box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
-        border-radius: 50px;
-    }
-
-    75% {
+    95% {
         transform: scale(1)
     }
 
     to {
-        border-radius: 50px;
-        box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
         width: 100px;
         transform: scale(.5);
-        overflow: hidden;
     }
 }
 
