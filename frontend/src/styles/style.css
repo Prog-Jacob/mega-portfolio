@@ -214,7 +214,7 @@ main {
     bottom: 0;
     width: 100vw;
     height: 100vh;
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; */
     overflow-x: hidden;
     overflow-y: auto;
     visibility: hidden;
@@ -249,7 +249,7 @@ main {
 }
 
 section {
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
     min-height: 100%;
     width: 100vw;
 }
