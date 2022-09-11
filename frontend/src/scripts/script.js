@@ -1,4 +1,3 @@
-// let slideWithScroll = document.querySelectorAll('.scroll-slide > *');
 let themeToggler = document.querySelector('.theme-celestial');
 let themeStylesheet = document.querySelector('#theme-styles');
 let shrinkButton = document.querySelector("#shrink-toggle");
@@ -7,40 +6,12 @@ let header = document.querySelector("header");
 let headerClassList = header.classList;
 let main = document.querySelector("main");
 let mainClassList = main.classList;
-let timerOne = null;
-let timerTwo = null;
+let timer = null;
 
 let theme = localStorage.getItem('theme');
 if (theme == null) {
     window.matchMedia("(prefers-color-scheme: dark)").matches ? setTheme("default") : setTheme("light");
-}
-else setTheme(theme);
-
-document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
-    let container3d = document.querySelector('.container-3d');
-    let resetRotation = null;
-
-    hemisphere.addEventListener('click', () => {
-        clearTimeout(resetRotation);
-        let nthParent = Number(getComputedStyle(hemisphere)
-            .getPropertyValue('--nth-parent'));
-        let rotationNum = Number(getComputedStyle(container3d)
-            .getPropertyValue('--rotate-on-click'));
-        rotationNum = (nthParent * -2 + 1) * 20 + rotationNum;
-
-        container3d.setAttribute('style', `
-                --rotate-on-click: ${rotationNum};
-                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
-            `);
-
-        resetRotation = setTimeout(function () {
-            container3d.setAttribute('style', `
-                --rotate-on-click: 0;
-                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
-            `);
-        }, Math.abs(rotationNum) * 50)
-    });
-});
+} else setTheme(theme);
 
 for (let i = 0; i < 25; i++) {
     const star = document.createElement('div');
@@ -99,6 +70,32 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     headerClassList.toggle('header-toggler');
 });
 
+document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
+    let container3d = document.querySelector('.container-3d');
+    let resetRotation = null;
+
+    hemisphere.addEventListener('click', () => {
+        clearTimeout(resetRotation);
+        let nthParent = Number(getComputedStyle(hemisphere)
+            .getPropertyValue('--nth-parent'));
+        let rotationNum = Number(getComputedStyle(container3d)
+            .getPropertyValue('--rotate-on-click'));
+        rotationNum = (nthParent * -2 + 1) * 20 + rotationNum;
+
+        container3d.setAttribute('style', `
+                --rotate-on-click: ${rotationNum};
+                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
+            `);
+
+        resetRotation = setTimeout(function () {
+            container3d.setAttribute('style', `
+                --rotate-on-click: 0;
+                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
+            `);
+        }, Math.abs(rotationNum) * 50)
+    });
+});
+
 if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mouseup', function (event) {
         const bullet = document.createElement('div');
@@ -121,37 +118,24 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
-    // let currentScroll = this.scrollTop;
-
-    // transformOnScroll(slideWithScroll, `translate(${-2 * currentScroll}px, ${currentScroll}px)`);
-    // transformOnScroll(document.querySelectorAll('.water-wave *'), `translate(${currentScroll}px, ${currentScroll}px) scale(${1 - currentScroll / 700}`);
-
     toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
 
-    if (timerTwo == null) {
-        if (headerClassList.contains('expand-header')) headerClassList.remove('expand-header');
-        header.offsetWidth;
-        if (!(headerClassList.contains('roll-header'))) headerClassList.add('roll-header');
+    if (headerClassList.contains('expand-header')) headerClassList.remove('expand-header');
+    header.offsetWidth;
+    if (!(headerClassList.contains('roll-header'))) headerClassList.add('roll-header');
 
-        if (mainClassList.contains('shrink-view')) mainClassList.remove('shrink-view');
-        main.offsetWidth;
-        if (!(mainClassList.contains('expand-view'))) mainClassList.add('expand-view');
-    }
+    if (mainClassList.contains('shrink-view')) mainClassList.remove('shrink-view');
+    main.offsetWidth;
+    if (!(mainClassList.contains('expand-view'))) mainClassList.add('expand-view');
 
-    if (timerOne !== null) clearTimeout(timerOne);
+    clearTimeout(timer);
 
-    timerOne = setTimeout(function () {
+    timer = setTimeout(function () {
         toggleScrollbar();
-    }, 3000);
+    }, 1000);
 }, false);
 
 shrinkButton.addEventListener('click', function () {
-    toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
-    timerTwo = setTimeout(function () {
-        toggleScrollbar();
-        timerTwo = null;
-    }, 2000);
-
     if (mainClassList.contains('expand-view')) mainClassList.remove('expand-view');
     main.offsetWidth;
     if (!(mainClassList.contains('shrink-view'))) mainClassList.add('shrink-view');
@@ -177,12 +161,6 @@ function toggleScrollbar(boxshadow, border, width) {
     document.documentElement.style.setProperty('--scroll-border', border || 'none');
     document.documentElement.style.setProperty('--scroll-width', width || 'none');
 }
-
-// function transformOnScroll(parents, value) {
-//     parents.forEach(element => {
-//         element.style.transform = value;
-//     });
-// }
 
 function orderElements(elements, variable) {
     elements.forEach((element, index) =>
