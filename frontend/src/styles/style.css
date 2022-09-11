@@ -429,6 +429,11 @@ section {
     transform: rotateX(calc(var(--rotate-on-click) * 1deg));
 }
 
+.container-3d * {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .sphere {
     transform-style: preserve-3d;
     transform-origin: 50% 50%;
@@ -676,15 +681,6 @@ section {
 @media (pointer: fine) {
     .star {
         animation: var(--star-speed) movingStars linear infinite;
-    }
-}
-
-@media not (pointer: fine) {
-    .sphere {
-        animation: none;
-    }
-    .container-3d {
-        animation: rotate 20s infinite linear;
     }
 }
 

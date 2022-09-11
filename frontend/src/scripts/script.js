@@ -6,6 +6,7 @@ let header = document.querySelector("header");
 let headerClassList = header.classList;
 let main = document.querySelector("main");
 let mainClassList = main.classList;
+let container3d = document.querySelector('.container-3d');
 let scrollbarToggler = false;
 let timer = null;
 
@@ -72,7 +73,6 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
 });
 
 document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
-    let container3d = document.querySelector('.container-3d');
     let resetRotation = null;
 
     hemisphere.addEventListener('click', () => {
@@ -96,6 +96,10 @@ document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
         }, Math.abs(rotationNum) * 50)
     });
 });
+
+container3d.addEventListener('contextmenu', function() {
+    this.style.perspective = '50px';
+})
 
 if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mouseup', function (event) {
