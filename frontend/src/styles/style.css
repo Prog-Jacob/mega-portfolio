@@ -214,7 +214,7 @@ main {
     bottom: 0;
     width: 100vw;
     height: 100vh;
-    /* scroll-snap-type: y mandatory; */
+    scroll-snap-type: y mandatory;
     overflow-x: hidden;
     overflow-y: auto;
     visibility: hidden;
@@ -249,8 +249,8 @@ main {
 }
 
 section {
-    /* scroll-snap-align: start; */
-    min-height: 100%;
+    scroll-snap-align: start;
+    min-height: 100vh;
     width: 100vw;
 }
 
@@ -309,7 +309,8 @@ section {
 .text-note {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--main-textnote-color);
-    font-size: max(1rem, 2vw);
+    line-height: 1.2em;
+    font-size: max(.8rem, 2vw);
     font-style: italic;
 }
 
@@ -373,7 +374,6 @@ section {
 }
 
 .flex-section {
-    min-height: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -392,16 +392,16 @@ section {
 }
 
 .about-me p {
-    margin: 10px 0;
+    margin: 10px 0 20px;
     padding: 10px;
 }
 
 .about-me p:first-line {
-    text-decoration: overline var(--star-color);
+    text-decoration: overline var(--tertiary-color);
 }
 
 .about-me p:first-letter {
-    color: var(--star-color);
+    color: var(--tertiary-color);
     font-weight: bold;
 }
 
@@ -414,7 +414,7 @@ section {
     width: fit-content;
     font-weight: bold;
     animation: bubble 10s infinite linear;
-    color: var(--star-color);
+    color: var(--tertiary-color);
 }
 
 .container-3d {
@@ -639,7 +639,6 @@ section {
     text-shadow: .01em .01em;
 }
 
-
 /* ================================================================================================================== */
 @media (max-width: 767px) {
     .flex-section {
@@ -675,6 +674,15 @@ section {
 @media (pointer: fine) {
     .star {
         animation: var(--star-speed) movingStars linear infinite;
+    }
+}
+
+@media not (pointer: fine) {
+    .sphere {
+        animation: none;
+    }
+    .container-3d {
+        animation: rotate 20s infinite linear;
     }
 }
 
