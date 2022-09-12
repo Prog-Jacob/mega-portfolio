@@ -436,6 +436,10 @@ section {
     user-select: none;
 }
 
+.flex-section > *:last-child *:not(.half-container) {
+    pointer-events: none;
+}
+
 .sphere {
     transform-style: preserve-3d;
     transform-origin: 50% 50%;

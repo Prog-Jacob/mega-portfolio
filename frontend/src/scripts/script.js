@@ -75,6 +75,10 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
 document.querySelectorAll('.half-container').forEach((half) => {
     let resetRotation = null;
 
+    half.addEventListener('contextmenu', function () {
+        container3d.style.perspective = '50px';
+    })
+
     half.addEventListener('click', () => {
         clearTimeout(resetRotation);
         let nthParent = Number(getComputedStyle(half)
@@ -96,10 +100,6 @@ document.querySelectorAll('.half-container').forEach((half) => {
         }, Math.abs(rotationNum) * 50)
     });
 });
-
-container3d.addEventListener('contextmenu', function () {
-    this.style.perspective = '50px';
-})
 
 if (window.matchMedia('(pointer: fine)').matches) {
     document.addEventListener('mouseup', function (event) {
