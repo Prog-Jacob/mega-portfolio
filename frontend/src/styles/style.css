@@ -436,7 +436,7 @@ section {
     user-select: none;
 }
 
-.flex-section > *:last-child *:not(.half-container) {
+.flex-section>*:last-child *:not(.half-container) {
     pointer-events: none;
 }
 
@@ -498,7 +498,18 @@ section {
     transition: transform 1s;
 }
 
+.lazy-load {
+    opacity: 0;
+    visibility: hidden;
+}
 
+.lazy-loaded {
+    --start-y: 50px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0s 1.5s ease-in-out;
+    animation: slide .5s 1s ease-in-out;
+}
 
 #footer {
     --start-x: 100vw;

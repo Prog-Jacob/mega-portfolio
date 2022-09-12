@@ -160,6 +160,22 @@ shrinkButton.addEventListener('click', function () {
 }
 );
 
+document.addEventListener("DOMContentLoaded", function () {
+    if ("IntersectionObserver" in window) {
+        let elementObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting && !entry.target.classList.contains('lazy-loaded')) {
+                        entry.target.classList.add('lazy-loaded');
+                }
+            });
+        });
+
+        document.querySelectorAll('.lazy-load').forEach(function (element) {
+            elementObserver.observe(element);
+        });
+    }
+})
+
 document.querySelectorAll('.hemisphere').forEach((element) => {
     element.style.setProperty('--child-num', `${element.childElementCount}`);
 })
