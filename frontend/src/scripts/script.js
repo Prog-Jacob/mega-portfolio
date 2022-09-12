@@ -72,12 +72,12 @@ document.querySelector('.navbar-toggler').addEventListener('click', function () 
     headerClassList.toggle('header-toggler');
 });
 
-document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
+document.querySelectorAll('.half-container').forEach((half) => {
     let resetRotation = null;
 
-    hemisphere.addEventListener('click', () => {
+    half.addEventListener('click', () => {
         clearTimeout(resetRotation);
-        let nthParent = Number(getComputedStyle(hemisphere)
+        let nthParent = Number(getComputedStyle(half)
             .getPropertyValue('--nth-parent'));
         let rotationNum = Number(getComputedStyle(container3d)
             .getPropertyValue('--rotate-on-click'));
@@ -97,7 +97,7 @@ document.querySelectorAll('.hemisphere').forEach((hemisphere) => {
     });
 });
 
-container3d.addEventListener('contextmenu', function() {
+container3d.addEventListener('contextmenu', function () {
     this.style.perspective = '50px';
 })
 
@@ -123,6 +123,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
+
     if (!scrollbarToggler) {
         toggleScrollbar('inset 0 0 6px var(--secondary-color)', 'solid var(--secondary-color) 2px', 'auto');
         scrollbarToggler = true;
@@ -163,8 +164,9 @@ document.querySelectorAll('.hemisphere').forEach((element) => {
     element.style.setProperty('--child-num', `${element.childElementCount}`);
 })
 
-orderElements(document.querySelectorAll('.show-text:nth-child(n-1)'), '--nth-child');
 orderElements(document.querySelectorAll('.hemisphere'), '--nth-parent');
+orderElements(document.querySelectorAll('.half-container'), '--nth-parent');
+orderElements(document.querySelectorAll('.show-text:nth-child(n-1)'), '--nth-child');
 orderElements(document.querySelectorAll('.hemisphere:nth-child(1) .skill'), '--nth-child');
 orderElements(document.querySelectorAll('.hemisphere:nth-child(2) .skill'), '--nth-child');
 
