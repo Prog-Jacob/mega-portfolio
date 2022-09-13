@@ -96,7 +96,6 @@ header {
     width: 100vw;
     z-index: 800;
     visibility: hidden;
-    border-radius: 50px;
     overflow: hidden;
     animation: .5s slide 3s ease-in-out forwards;
 }
@@ -118,7 +117,7 @@ header a {
     font-family: monospace;
     margin-right: 1.5rem;
     font-size: 1.2rem;
-    transition: all .2s;
+    transition: color .2s;
 }
 
 header a:hover {
@@ -137,6 +136,7 @@ header>a:active {
 .roll-header,
 .expand-header {
     visibility: visible;
+    border-radius: 50px;
     box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
     will-change: transform, width;
 }
@@ -198,16 +198,6 @@ header>a:active {
 
 .header-toggler .nav-link {
     filter: drop-shadow(0 0 .5rem var(--main-paragraph-color));
-}
-
-.expand-view {
-    visibility: visible;
-    animation: .5s pulseScreen 1.5s alternate 2;
-}
-
-.shrink-view {
-    visibility: visible;
-    animation: .5s expandView linear reverse backwards;
 }
 
 main {
@@ -407,18 +397,18 @@ section {
 }
 
 .bubble {
+    aspect-ratio: 1;
     position: relative;
     background: var(--intro-color);
-    border-radius: 47% 53% 47% 53% / 53% 47% 53% 47%;
-    padding: 2em;
+    border-radius: 50%;
+    padding: 1em;
     margin-right: .5em;
-    margin-bottom: .5em;
     font-size: clamp(.8rem, 2vw, 2rem);
     float: left;
     font-weight: bold;
     color: var(--star-color);
-    shape-outside: ellipse(100% 40% at left center);
-    animation: bubble 10s infinite linear;
+    shape-outside: circle();
+    animation: rubberBand 2s 1s;
 }
 
 .container-3d {
@@ -496,19 +486,6 @@ section {
     border-radius: 50px;
     background: rgba(var(--intro-color-rgb), .25);
     transition: transform 1s;
-}
-
-.lazy-load {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.lazy-loaded {
-    --start-y: 50px;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0s 1.5s ease-in-out;
-    animation: slide .5s 1s ease-in-out;
 }
 
 #footer {
@@ -602,6 +579,18 @@ section {
     filter: var(--focus-filter);
 }
 
+.lazy-load>* {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.lazy-loaded>* {
+    --start-y: 100px;
+    opacity: 1;
+    visibility: visible;
+    animation: zoomInUp .75s calc(var(--lazy-order) * .5s + .3s);
+    transition: opacity .75s calc(var(--lazy-order) * .5s + .3s) ease-in-out;
+}
 
 /* ================================================================================================================== */
 :root {
@@ -741,6 +730,7 @@ section {
     }
 }
 
+/* Expensive */
 @keyframes fade {
     to {
         height: var(--end-h);
@@ -774,6 +764,7 @@ section {
     }
 }
 
+/* Expensive */
 @keyframes shrinkHeader {
     95% {
         transform: scale(1)
@@ -785,21 +776,10 @@ section {
     }
 }
 
-@keyframes expandView {
-    to {
-        height: 100vh;
-    }
-}
-
+/* Expensive */
 @keyframes boxShadow {
     to {
         box-shadow: none;
-    }
-}
-
-@keyframes pulseScreen {
-    to {
-        box-shadow: inset 15px 15px 15px -15px var(--secondary-color), inset -15px -15px 15px -15px var(--secondary-color);
     }
 }
 
@@ -860,20 +840,6 @@ section {
 
     to {
         transform: rotateY(720deg) rotateX(0deg);
-    }
-}
-
-@keyframes bubble {
-    25% {
-        border-radius: 65% 35% 69% 31% / 68% 41% 59% 32%;
-    }
-
-    50% {
-        border-radius: 48% 52% 49% 51% / 68% 66% 34% 32%;
-    }
-
-    75% {
-        border-radius: 31% 69% 33% 67% / 32% 70% 30% 68%;
     }
 }
 

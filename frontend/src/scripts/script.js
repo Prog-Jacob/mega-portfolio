@@ -135,12 +135,6 @@ main.addEventListener('scroll', function (event) {
     }
     if (!(headerClassList.contains('roll-header'))) headerClassList.add('roll-header');
 
-    if (mainClassList.contains('shrink-view')) {
-        mainClassList.remove('shrink-view');
-        main.offsetWidth;
-    }
-    if (!(mainClassList.contains('expand-view'))) mainClassList.add('expand-view');
-
     clearTimeout(timer);
 
     timer = setTimeout(function () {
@@ -150,10 +144,6 @@ main.addEventListener('scroll', function (event) {
 }, false);
 
 shrinkButton.addEventListener('click', function () {
-    if (mainClassList.contains('expand-view')) mainClassList.remove('expand-view');
-    main.offsetWidth;
-    if (!(mainClassList.contains('shrink-view'))) mainClassList.add('shrink-view');
-
     if (headerClassList.contains('roll-header')) headerClassList.remove('roll-header');
     header.offsetWidth;
     if (!(headerClassList.contains('expand-header'))) headerClassList.add('expand-header');
@@ -162,16 +152,28 @@ shrinkButton.addEventListener('click', function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     if ("IntersectionObserver" in window) {
-        let elementObserver = new IntersectionObserver(function (entries, observer) {
+        let lazyObserver = new IntersectionObserver(function (entries, observer) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting && !entry.target.classList.contains('lazy-loaded')) {
-                        entry.target.classList.add('lazy-loaded');
+                    entry.target.classList.add('lazy-loaded');
                 }
             });
-        });
+        }, { rootMargin: '-10%' });
+        let activateObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'none';
+                    entry.target.offsetHeight;
+                    entry.target.style.animation = null;
+                }
+            });
+        }, { rootMargin: '-10%' });
 
         document.querySelectorAll('.lazy-load').forEach(function (element) {
-            elementObserver.observe(element);
+            lazyObserver.observe(element);
+        });
+        document.querySelectorAll('.activate').forEach(function (element) {
+            activateObserver.observe(element);
         });
     }
 })
@@ -185,6 +187,9 @@ orderElements(document.querySelectorAll('.half-container'), '--nth-parent');
 orderElements(document.querySelectorAll('.show-text:nth-child(n-1)'), '--nth-child');
 orderElements(document.querySelectorAll('.hemisphere:nth-child(1) .skill'), '--nth-child');
 orderElements(document.querySelectorAll('.hemisphere:nth-child(2) .skill'), '--nth-child');
+document.querySelectorAll('.lazy-load').forEach(function (element) {
+    orderElements([...element.children], '--lazy-order');
+})
 
 
 function toggleScrollbar(boxshadow, border, width) {
