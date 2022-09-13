@@ -214,13 +214,14 @@ main {
 }
 
 .star {
+    z-index: 1000;
     position: fixed;
+    font-size: 12em;
     top: var(--star-top);
     left: var(--star-left);
-    margin: var(--star-width) auto;
     width: var(--star-width);
-    font-size: 12em;
-    z-index: 1000;
+    margin: var(--star-width) auto;
+    animation: var(--star-speed) movingStars linear infinite;
 }
 
 .star:before,
@@ -368,8 +369,8 @@ section {
 .flex-section {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     padding: 15vh 0;
 }
 
@@ -383,11 +384,15 @@ section {
 }
 
 .about-me p {
+    text-align-last: center;
     margin: 10px 0 20px;
     padding: 10px;
 }
 
 .about-me p:first-line {
+    text-decoration: overline var(--star-color);
+}
+.about-me p:last-line {
     text-decoration: overline var(--star-color);
 }
 
@@ -412,13 +417,14 @@ section {
 }
 
 .container-3d {
-    --rotate-on-click: 0;
     --diameter: clamp(250px, 35vw, 700px);
+    --rotate-on-click: 0;
     transform-style: preserve-3d;
-    perspective: 10000px;
     height: var(--diameter);
     width: var(--diameter);
-    transform: rotateX(calc(var(--rotate-on-click) * 1deg));
+    perspective: 10000px;
+    will-change: transform, perspective;
+    transform: translate3d( 0, 0, 0 ) rotateX(calc(var(--rotate-on-click) * 1deg));
 }
 
 .container-3d * {
@@ -439,8 +445,9 @@ section {
     width: 100%;
     left: 0;
     top: 0;
-    animation: rotate 20s infinite linear;
     outline: solid purple;
+    transform: translate3d( 0, 0, 0 );
+    animation: rotate 20s infinite linear;
 }
 
 .hemisphere {
@@ -451,12 +458,13 @@ section {
     height: 100%;
     transform-style: preserve-3d;
     transform-origin: 50% 50%;
-    transform: rotateX(90deg);
+    transform: translate3d( 0, 0, 0 ) rotateX(90deg);
     outline: solid var(--star-color);
 }
 
 .hemisphere:nth-child(2) {
-    transform: rotateX(-90deg);
+    transform: rotateX(-90deg) rotateZ(10deg);
+    outline: none;
 }
 
 .half-container {
@@ -472,11 +480,9 @@ section {
 
 .skill {
     position: absolute;
-    transform-style: preserve-3d;
-    transform-origin: 50% 50%;
     left: 50%;
     top: 50%;
-    transform: translateZ(calc(var(--nth-child) / (2 * var(--child-num)) * var(--diameter))) rotateZ(calc(15deg + var(--nth-child) * (360deg / var(--child-num)))) translateX(calc((var(--child-num) - var(--nth-child)) / (2 * var(--child-num)) * var(--diameter))) rotateX(calc((var(--nth-parent) * 2 - 1) * 90deg)) rotateY(90deg);
+    transform: translate3d( 0, 0, 0 ) translateZ(calc(var(--nth-child) / (2 * var(--child-num)) * var(--diameter))) rotateZ(calc(15deg + var(--nth-child) * (360deg / var(--child-num)))) translateX(calc((var(--child-num) - var(--nth-child)) / (2 * var(--child-num)) * var(--diameter))) rotateX(calc((var(--nth-parent) * 2 - 1) * 90deg)) rotateY(90deg);
     color: var(--main-paragraph-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: clamp(1.3rem, 2vw, 2rem);
@@ -588,8 +594,8 @@ section {
     --start-y: 100px;
     opacity: 1;
     visibility: visible;
-    animation: zoomInUp .75s calc(var(--lazy-order) * .5s + .3s);
-    transition: opacity .75s calc(var(--lazy-order) * .5s + .3s) ease-in-out;
+    animation: zoomInUp 1s calc(var(--lazy-order) * .5s + .3s);
+    transition: opacity 0s calc(var(--lazy-order) * .5s + .3s) ease-in-out;
 }
 
 /* ================================================================================================================== */
@@ -694,12 +700,6 @@ section {
 @media (hover: hover) and (pointer: fine) {
     .theme-celestial div:hover {
         filter: brightness(75%)
-    }
-}
-
-@media (pointer: fine) {
-    .star {
-        animation: var(--star-speed) movingStars linear infinite;
     }
 }
 
