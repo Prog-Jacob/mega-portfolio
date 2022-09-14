@@ -87,15 +87,15 @@
 }
 
 header {
-    --start-y: -100px;
     position: fixed !important;
     background: var(--primary-color) !important;
     box-shadow: inset 0 15px 30px -25px var(--intro-color);
     width: 100vw;
     z-index: 800;
-    visibility: hidden;
     overflow: hidden;
-    animation: .5s slide 3s ease-in-out forwards;
+    opacity: 0;
+    visibility: hidden;
+    animation: .5s slideInDown 3s ease-in-out, showUp .5s 3s forwards;
 }
 
 #shrink-toggle {
@@ -134,13 +134,15 @@ header>a:active {
 .roll-header,
 .expand-header {
     visibility: visible;
-    border-radius: 50px;
+    border-radius: 0 50px 50px 0;
     box-shadow: 10px 10px 20px -10px var(--secondary-color), -10px -10px 20px -10px var(--secondary-color);
     will-change: transform, width;
 }
 
 .roll-header {
-    animation: shrinkHeader 1s linear forwards;
+    width: 100px;
+    transform: scale(.5) translateX(-50%);
+    transition: width 1s, transform .3s .7s;
 }
 
 .roll-header>* {
@@ -161,8 +163,10 @@ header>a:active {
 }
 
 .expand-header {
-    height: 100px;
-    animation: shrinkHeader 1s linear reverse, boxShadow 1.5s .5s linear forwards;
+    max-height: 100px;
+    width: 100%;
+    box-shadow: none;
+    transition: transform .2s, width 1s, box-shadow .5s 1.25s;
 }
 
 .expand-header #shrink-toggle {
@@ -174,7 +178,7 @@ header>a:active {
 }
 
 .header-toggler {
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -589,7 +593,6 @@ section {
 }
 
 .lazy-loaded>* {
-    --start-y: 100px;
     opacity: 1;
     visibility: visible;
     animation: zoomInUp 1s calc(var(--lazy-order) * .5s + .3s);
@@ -623,9 +626,6 @@ section {
     --start-x: 0;
     --end-y: 0;
     --end-x: 0;
-
-    --end-h: 100%;
-    --end-w: 100%;
 
     --scroll-boxshadow: none;
     --scroll-border: none;
@@ -673,6 +673,29 @@ section {
 @media (max-width: 767px) {
     .flex-section {
         padding-bottom: 20vh;
+    }
+
+    .roll-header,
+    .expand-header {
+        border-radius: 50px;
+    }
+
+    .roll-header {
+        width: 93px;
+        transform: scale(.5);
+        transition: width .7s, transform .2s .6s;
+    }
+
+    .roll-header #shrink-toggle {
+        animation-iteration-count: 3;
+    }
+
+    .expand-header #expand-toggle {
+        animation-iteration-count: 3;
+    }
+
+    .expand-header {
+        transition: transform .2s, width .75s, box-shadow .3s 1s;
     }
 
     #footer {
@@ -732,6 +755,7 @@ section {
     25% {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(-100%) scale(0);
     }
@@ -740,6 +764,13 @@ section {
 @keyframes textFading {
     to {
         transform: translateX(100%);
+    }
+}
+
+@keyframes showUp {
+    to {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -768,18 +799,6 @@ section {
         transform: rotate(-360deg);
     }
 }
-
-/* Expensive
-@keyframes shrinkHeader {
-    95% {
-        transform: scale(1)
-    }
-
-    to {
-        width: 100px;
-        transform: scale(.5);
-    }
-} */
 
 @keyframes boxShadow {
     to {

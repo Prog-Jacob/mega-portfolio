@@ -5,7 +5,6 @@ let ringSentences = document.querySelectorAll('.ring-text');
 let header = document.querySelector("header");
 let headerClassList = header.classList;
 let main = document.querySelector("main");
-let mainClassList = main.classList;
 let container3d = document.querySelector('.container-3d');
 let scrollbarToggler = false;
 let timer = null;
@@ -129,10 +128,7 @@ main.addEventListener('scroll', function (event) {
         scrollbarToggler = true;
     }
 
-    if (headerClassList.contains('expand-header')) {
-        headerClassList.remove('expand-header');
-        header.offsetWidth;
-    }
+    if (headerClassList.contains('expand-header')) headerClassList.remove('expand-header');
     if (!(headerClassList.contains('roll-header'))) headerClassList.add('roll-header');
 
     clearTimeout(timer);
@@ -145,7 +141,6 @@ main.addEventListener('scroll', function (event) {
 
 shrinkButton.addEventListener('click', function () {
     if (headerClassList.contains('roll-header')) headerClassList.remove('roll-header');
-    header.offsetWidth;
     if (!(headerClassList.contains('expand-header'))) headerClassList.add('expand-header');
 }
 );
