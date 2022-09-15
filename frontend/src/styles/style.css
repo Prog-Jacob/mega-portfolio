@@ -455,7 +455,7 @@ Needs fix due to laggish animations on mobile devices
     top: 0;
     outline: solid purple;
     transform: translate3d(0, 0, 0);
-    animation: rotate 20s infinite linear;
+    /* animation: rotate 20s infinite linear; */
 }
 
 .hemisphere {
