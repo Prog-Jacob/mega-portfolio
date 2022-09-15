@@ -67,8 +67,12 @@ themeToggler.addEventListener('click', function () {
     setTheme(this.dataset.theme);
 })
 
-document.querySelector('.navbar-toggler').addEventListener('click', function () {
+document.querySelector('.navbar-toggler').addEventListener('click', function (event) {
     headerClassList.toggle('header-toggler');
+    event.stopPropagation();
+    document.querySelector('.header-toggler')?.addEventListener('click', function (event) {
+        headerClassList.remove('header-toggler');
+    }, { once: true });
 });
 
 document.querySelectorAll('.half-container').forEach((half) => {
