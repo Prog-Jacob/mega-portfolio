@@ -48,7 +48,3 @@
 .header-toggler .nav-item {
     outline: solid 1px var(--tertiary-color);
 }
-
-.sphere {
-    outline: solid orange;
-}

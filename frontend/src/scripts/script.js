@@ -75,55 +75,6 @@ document.querySelector('.navbar-toggler').addEventListener('click', function (ev
     }, { once: true });
 });
 
-document.querySelectorAll('.half-container').forEach((half) => {
-    let resetRotation = null;
-
-    half.addEventListener('contextmenu', function () {
-        container3d.style.perspective = '50px';
-    })
-
-    half.addEventListener('click', () => {
-        clearTimeout(resetRotation);
-        let nthParent = Number(getComputedStyle(half)
-            .getPropertyValue('--nth-parent'));
-        let rotationNum = Number(getComputedStyle(container3d)
-            .getPropertyValue('--rotate-on-click'));
-        rotationNum = (nthParent * -2 + 1) * 20 + rotationNum;
-
-        container3d.setAttribute('style', `
-                --rotate-on-click: ${rotationNum};
-                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
-            `);
-
-        resetRotation = setTimeout(function () {
-            container3d.setAttribute('style', `
-                --rotate-on-click: 0;
-                transition: transform ${Math.abs(rotationNum) * 50}ms linear;
-            `);
-        }, Math.abs(rotationNum) * 50)
-    });
-});
-
-if (window.matchMedia('(pointer: fine)').matches) {
-    document.addEventListener('mouseup', function (event) {
-        const bullet = document.createElement('div');
-
-        bullet.classList.add('bullet');
-        bullet.setAttribute('style', `
-        top: ${event.clientY}px;
-        left: ${event.clientX}px;
-        --h-distance: -${event.clientX}px;
-        --v-distance: -${event.clientX * Math.tan(40 * Math.PI / 180)}px;
-        --bullet-timing: ${event.clientX}ms;
-        `)
-
-        document.documentElement.appendChild(bullet);
-        setTimeout(function () {
-            bullet.remove();
-        }, 4000)
-    })
-}
-
 main.addEventListener('scroll', function (event) {
     event.preventDefault();
 
@@ -181,14 +132,13 @@ document.querySelectorAll('.hemisphere').forEach((element) => {
     element.style.setProperty('--child-num', `${element.childElementCount}`);
 })
 
-orderElements(document.querySelectorAll('.hemisphere'), '--nth-parent');
-orderElements(document.querySelectorAll('.half-container'), '--nth-parent');
+orderElements(document.querySelectorAll('.sphere .hemisphere'), '--nth-parent');
+orderElements(document.querySelectorAll('.sphere2 .hemisphere'), '--nth-parent');
 orderElements(document.querySelectorAll('.show-text:nth-child(n-1)'), '--nth-child');
-orderElements(document.querySelectorAll('.hemisphere:nth-child(1) .skill'), '--nth-child');
-orderElements(document.querySelectorAll('.hemisphere:nth-child(2) .skill'), '--nth-child');
-document.querySelectorAll('.lazy-load').forEach(function (element) {
-    orderElements([...element.children], '--lazy-order');
-})
+orderElements(document.querySelectorAll('.sphere .hemisphere:nth-child(1) .skill'), '--nth-child');
+orderElements(document.querySelectorAll('.sphere .hemisphere:nth-child(2) .skill'), '--nth-child');
+orderElements(document.querySelectorAll('.sphere2 .hemisphere:nth-child(1) .skill'), '--nth-child');
+orderElements(document.querySelectorAll('.sphere2 .hemisphere:nth-child(2) .skill'), '--nth-child');
 
 
 function toggleScrollbar(boxshadow, border, width) {
@@ -202,6 +152,11 @@ function orderElements(elements, variable) {
         element.style.setProperty(variable, `${index}`)
     );
 }
+
+document.querySelectorAll(".copy-button").forEach(button => button.addEventListener("click", e => {
+    let text = e.target.parentNode.previousElementSibling.innerText;
+    navigator.clipboard.writeText(text);
+}));
 
 function setTheme(theme) {
     if (theme === 'default') {
