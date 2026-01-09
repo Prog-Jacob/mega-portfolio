@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+/* ============================================
+   CSS Variables - Light First (default)
+   ============================================ */
+:root {
+  /* Core colors - Light theme */
+  --intro-color: 233 218 193;
+  --primary-color: 247 236 222;
+  --secondary-color: 128 128 128;
+  --tertiary-color: 31 31 31;
+
+  /* Text colors */
+  --heading-color-1: 31 31 31;
+  --heading-color-2: 233 218 193;
+  --paragraph-color: 31 31 31;
+  --textnote-color: 31 31 31;
+
+  /* Interactive colors */
+  --font-selection-color: 31 31 31;
+  --font-hover-color: 232 94 70;
+  --font-cover-color: 233 218 193;
+  --star-color: 31 31 31;
+
+  /* Theme-specific */
+  --celestial-shadow: yellow;
+  --theme-image: url("/images/sun.png");
+  --cursor-icon: url("/icons/astronaut_icon_light.svg");
+
+  /* Animation variables */
+  --start-y: 0;
+  --start-x: 0;
+  --end-y: 0;
+  --end-x: 0;
+
+  /* Scrollbar */
+  --scroll-boxshadow: none;
+  --scroll-border: none;
+  --scroll-width: none;
+}
+
+/* Dark theme */
+.dark {
+  --intro-color: 6 12 22;
+  --primary-color: 17 34 62;
+  --secondary-color: 23 162 184;
+  --tertiary-color: 241 241 241;
+
+  --heading-color-1: 0 255 255;
+  --heading-color-2: 255 192 203;
+  --paragraph-color: 241 241 193;
+  --textnote-color: 241 241 241;
+
+  --font-selection-color: 241 241 241;
+  --font-hover-color: 0 255 255;
+  --font-cover-color: 198 148 137;
+  --star-color: 255 255 0;
+
+  --celestial-shadow: rgb(var(--tertiary-color));
+  --theme-image: url("/images/moon.png");
+  --cursor-icon: url("/icons/astronaut_icon.svg");
+}
+
+/* ============================================
+   Tailwind v4 Theme Configuration
+   ============================================ */
+@theme inline {
+  /* Colors using CSS variables for theme support */
+  --color-intro: rgb(var(--intro-color));
+  --color-primary: rgb(var(--primary-color));
+  --color-secondary: rgb(var(--secondary-color));
+  --color-tertiary: rgb(var(--tertiary-color));
+
+  --color-heading-1: rgb(var(--heading-color-1));
+  --color-heading-2: rgb(var(--heading-color-2));
+  --color-paragraph: rgb(var(--paragraph-color));
+  --color-star: rgb(var(--star-color));
+
+  /* Fonts */
+  --font-formula: "Formula Serial Bold", sans-serif;
+
+  /* Animation timings */
+  --animate-fill-svg: fillSvg 1s linear forwards;
+  --animate-intro-fade: introFading 0.6s linear forwards;
+  --animate-slide: slide 1.5s ease-in forwards;
+  --animate-water-wave: waterWave 2.5s ease-in-out infinite;
+  --animate-moving-stars: movingStars linear infinite;
+  --animate-rotate: rotate 60s linear infinite;
+}
+
+/* ============================================
+   Font Face
+   ============================================ */
+@font-face {
+  font-family: "Formula Serial Bold";
+  src: url("/fonts/formula-serial-bold.ttf");
+  font-display: swap;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+* {
+  cursor: var(--cursor-icon), auto;
+}
+
+body {
+  background: rgb(var(--intro-color));
+  color: rgb(var(--tertiary-color));
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============================================
+   Selection Styling
+   ============================================ */
+*::selection {
+  background: rgb(var(--heading-color-2));
+  color: rgb(var(--font-selection-color));
+  text-shadow: 0.01em 0.01em;
+}
+
+/* ============================================
+   Scrollbar Styling
+   ============================================ */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: rgb(var(--intro-color) / 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  border: var(--scroll-border);
+  box-shadow: var(--scroll-boxshadow);
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--secondary-color));
+}
+
+* {
+  scrollbar-color: rgb(var(--secondary-color)) rgb(var(--intro-color) / 0.5);
+  scrollbar-width: var(--scroll-width);
+}
+
+/* ============================================
+   Keyframe Animations
+   ============================================ */
+@keyframes fillSvg {
+  from {
+    opacity: 1;
+    stroke-width: 15;
+    stroke-dashoffset: var(--dasharray);
+  }
+  30% {
+    stroke-width: 40;
+  }
+  50% {
+    stroke-width: 40;
+  }
+  to {
+    opacity: 1;
+    stroke-width: 15;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes introFading {
+  25% {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%) scale(0);
+  }
+}
+
+@keyframes textFading {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes showUp {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes changeColor {
+  to {
+    background: rgb(var(--primary-color));
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(var(--start-x), var(--start-y));
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(var(--end-x), var(--end-y));
+  }
+}
+
+@keyframes rollHeader {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes waterWave {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      16% 44%,
+      33% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      15% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
+
+@keyframes movingStars {
+  25% {
+    transform: translate(
+      calc(var(--star-x) * 100vw),
+      calc(var(--star-y) * 100vh)
+    );
+  }
+  75% {
+    transform: translate(
+      calc(-1 * var(--star-x) * 100vw),
+      calc(-1 * var(--star-y) * 100vh)
+    );
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes rotate {
+  25% {
+    transform: rotateY(180deg) rotateX(20deg);
+  }
+  50% {
+    transform: rotateY(360deg) rotateX(0deg);
+  }
+  75% {
+    transform: rotateY(540deg) rotateX(-20deg);
+  }
+  to {
+    transform: rotateY(720deg) rotateX(0deg);
+  }
+}
+
+@keyframes hide {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes rubberBand {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
