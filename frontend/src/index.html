@@ -1,195 +1,374 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property='og:description'
-        content='Full-stack web developer; proficient in designing fancy interfaces, server delivery, and database development.' />
-    <meta property='og:url' content='https://www.Ahmed-Abdelaziz.live/' />
-    <meta property='og:title' content='Ahmed Abdelaziz | Portfolio' />
-    <meta name="author" content="Ahmed Abdelaziz">
-    <meta property="og:type" content="profile">
-    <meta property="og:image" content="https://i.ibb.co/RCr1f3B/Portfolio-Thumbnail.png">
-    <meta property="og:image:width" content="1767">
-    <meta property="og:image:height" content="970">
-    <meta name="theme_color" content="#F7ECDE">
-    <meta name="msapplication-TileColor" content="#F7ECDE">
-    <meta name="msapplication-navbutton-color" content="#F7ECDE">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#F7ECDE">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Abdelaziz | Portfolio</title>
-    <link rel="icon" href="./docs/user_logo.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles/style.css">
-    <link id="theme-styles" rel="stylesheet" href="styles/light.css">
-    <link rel="image_src" href="./docs/Portfolio_Thumbnail.png" />
-    <link rel="stylesheet" href="docs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/animate.min.css" />
-    <script defer type="text/javascript" src="./scripts/script.js"></script>
-    <script defer src="docs/bootstrap/js/bootstrap.min.js"></script>
-</head>
+    <!-- Primary Meta Tags -->
+    <title>Ahmed Abdelaziz | Full-Stack Web Developer Portfolio</title>
+    <meta
+      name="title"
+      content="Ahmed Abdelaziz | Full-Stack Web Developer Portfolio"
+    />
+    <meta
+      name="description"
+      content="Full-stack web developer specializing in Node.js, React, TypeScript, and cloud deployment. Experienced in building RESTful APIs, fancy UI interfaces, and scalable web applications."
+    />
+    <meta
+      name="keywords"
+      content="Ahmed Abdelaziz, Full Stack Developer, Web Developer, Node.js, React, TypeScript, Express, AWS, Portfolio, Frontend Developer, Backend Developer, Egypt"
+    />
+    <meta name="author" content="Ahmed Abdelaziz" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ahmedabdelaziz.space/" />
 
-<body id="body">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://ahmedabdelaziz.space/" />
+    <meta
+      property="og:title"
+      content="Ahmed Abdelaziz | Full-Stack Web Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Full-stack web developer specializing in Node.js, React, TypeScript, and cloud deployment. Building scalable web applications and fancy UI interfaces."
+    />
+    <meta
+      property="og:image"
+      content="https://ahmedabdelaziz.space/Portfolio_Thumbnail.png"
+    />
+    <meta property="og:image:width" content="1767" />
+    <meta property="og:image:height" content="970" />
+    <meta property="og:image:alt" content="Ahmed Abdelaziz Portfolio Preview" />
+    <meta property="og:site_name" content="Ahmed Abdelaziz Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Ahmed" />
+    <meta property="profile:last_name" content="Abdelaziz" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://ahmedabdelaziz.space/" />
+    <meta
+      name="twitter:title"
+      content="Ahmed Abdelaziz | Full-Stack Web Developer Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Full-stack web developer specializing in Node.js, React, TypeScript, and cloud deployment."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ahmedabdelaziz.space/Portfolio_Thumbnail.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Ahmed Abdelaziz Portfolio Preview"
+    />
+
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#11223E" />
+    <meta name="msapplication-TileColor" content="#11223E" />
+    <meta name="msapplication-navbutton-color" content="#11223E" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#11223E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Ahmed Abdelaziz" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="./docs/user_logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./docs/user_logo.svg" />
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="./docs/moon.webp" as="image" type="image/webp" />
+    <link rel="preload" href="./sun.webp" as="image" type="image/webp" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmed Abdelaziz",
+        "url": "https://ahmedabdelaziz.space",
+        "image": "https://ahmedabdelaziz.space/Portfolio_Thumbnail.png",
+        "jobTitle": "Full-Stack Web Developer",
+        "description": "Full-stack web developer specializing in Node.js, React, TypeScript, and cloud deployment.",
+        "sameAs": [
+          "https://github.com/Prog-Jacob",
+          "https://www.linkedin.com/in/ahmd-abdelaziz/",
+          "https://codepen.io/Prog_Jacob"
+        ],
+        "knowsAbout": [
+          "JavaScript",
+          "TypeScript",
+          "Node.js",
+          "React",
+          "Express",
+          "SQL",
+          "AWS",
+          "CI/CD",
+          "Python"
+        ],
+        "email": "ahmed.abdelaziz.gm@gmail.com"
+      }
+    </script>
+
+    <script type="module" src="./main.js"></script>
+  </head>
+
+  <body id="body">
     <div class="center-elements" id="intro-container">
-        <svg id="intro-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-            id="Layer_1" x="0px" y="0px" viewBox="0 0 612 792" style="enable-background:new 0 0 612 792;"
-            xml:space="preserve">
-            <path class="st0"
-                d="M139,634c0-138.67,0-277.34,0-416.01l0,0C139.49,125.72,215.63,50.52,307,51c90.67,0.48,165.73,75.34,166,166  c0.3,101.33-93.01,165.89-169,167c-35.37,0.52-63.83-12.76-81-23l1.98,191L139,634z" />
-            <path class="st1"
-                d="M306,133c46.06-0.82,82.97,38.61,84,83c1.06,45.54-35.85,87.28-83,87c-46.91-0.28-83.02-42.02-82-87  C225.97,172.89,260.88,133.8,306,133z" />
-            <path class="st2"
-                d="M474,321c-7.98,12.47-20.44,29-39,45c-16.87,14.55-33.34,23.97-46,30c0.34,66.67,0.68,133.33,1.02,200  c-1.15,45.02-38.19,81.5-83.02,82c-45.12,0.51-83.11-35.59-84.87-80.89C199.75,619.07,177.38,641.04,155,663  c29.87,60.46,87.72,100.38,149,101c82.63,0.83,161.05-69.9,171-168L474,321z" />
-        </svg>
+      <svg
+        id="intro-logo"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        id="Layer_1"
+        x="0px"
+        y="0px"
+        viewBox="0 0 612 792"
+        style="enable-background: new 0 0 612 792"
+        xml:space="preserve"
+      >
+        <path
+          class="st0"
+          d="M139,634c0-138.67,0-277.34,0-416.01l0,0C139.49,125.72,215.63,50.52,307,51c90.67,0.48,165.73,75.34,166,166  c0.3,101.33-93.01,165.89-169,167c-35.37,0.52-63.83-12.76-81-23l1.98,191L139,634z"
+        />
+        <path
+          class="st1"
+          d="M306,133c46.06-0.82,82.97,38.61,84,83c1.06,45.54-35.85,87.28-83,87c-46.91-0.28-83.02-42.02-82-87  C225.97,172.89,260.88,133.8,306,133z"
+        />
+        <path
+          class="st2"
+          d="M474,321c-7.98,12.47-20.44,29-39,45c-16.87,14.55-33.34,23.97-46,30c0.34,66.67,0.68,133.33,1.02,200  c-1.15,45.02-38.19,81.5-83.02,82c-45.12,0.51-83.11-35.59-84.87-80.89C199.75,619.07,177.38,641.04,155,663  c29.87,60.46,87.72,100.38,149,101c82.63,0.83,161.05-69.9,171-168L474,321z"
+        />
+      </svg>
     </div>
 
     <header class="navbar navbar-dark" id="header">
-        <a id="expand-toggle" class="navbar-brand active" aria-current="page" href="#home"><img id="header-logo"
-                src="./docs/user_logo.svg" alt="The logo of the portfolio owner" class="navbar-brand svg"
-                height="75px"></a>
-        <button id="shrink-toggle">
-            <img id="header-logo" src="./docs/user_logo.svg" alt="The logo of the portfolio owner"
-                class="navbar-brand svg" height="75px">
-        </button>
-        <nav class="navbar navbar-expand-md nav-bar">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon svg"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 center-elements">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#experience">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">APIs</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="link" action="./resume.html">
-                        <button class="btn btn-outline-info svg" type="submit">Resume</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+      <a
+        id="expand-toggle"
+        class="navbar-brand active"
+        aria-current="page"
+        href="#home"
+        ><img
+          id="header-logo"
+          src="./docs/user_logo.svg"
+          alt="The logo of the portfolio owner"
+          class="navbar-brand svg"
+          height="75px"
+      /></a>
+      <button id="shrink-toggle">
+        <img
+          id="shrink-header-logo"
+          src="./docs/user_logo.svg"
+          alt="The logo of the portfolio owner"
+          class="navbar-brand svg"
+          height="75px"
+        />
+      </button>
+      <nav class="navbar navbar-expand-md nav-bar">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon svg"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 center-elements">
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#experience">Experience</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">APIs</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="link" action="./resume.html">
+              <button class="btn btn-outline-info svg" type="submit">
+                Resume
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <button data-theme="default" class="theme-celestial" aria-label="Theme toggler button">
-            <div></div>
-        </button>
-        <section id="home" class="scroll-slide home-section">
-            <div class="show-text">
-                <h1 class="ring-text heading">Hi,<br>I'm AHMED</h1>
-            </div>
-            <div class="show-text">
-                <p class="ring-text text-note">Full-Stack Developer &#8226; Web Designer</p>
-            </div>
-            <div class="show-text">
-                <p class="ring-text paragraph">I'm a full-stack web development freelancer. I am proficient
-                    in designing fancy interfaces; server delivery; and database development.</p>
-            </div>
-            <div class="water-wave scroll-slide">
-                <span>Let's Start</span>
-                <span>Let's Start</span>
-                <button onclick="window.location.href = 'https\://www.linkedin.com/in/ahmd-abdelaziz/'">Let's
-                    Start</button>
-            </div>
-        </section>
-        <section id="about" class="flex-section">
-            <div class="sphere">
-                <div class="hemisphere">
-                    <div class="skill">Typescript</div>
-                    <div class="skill">Node.js</div>
-                    <div class="skill">Express</div>
-                    <div class="skill">CI/CD</div>
-                    <div class="skill">SQL</div>
-                </div>
-                <div class="hemisphere">
-                    <div class="skill">Extensions</div>
-                    <div class="skill">Bootstrap</div>
-                    <div class="skill">React.js</div>
-                    <div class="skill">HTML</div>
-                    <div class="skill">CSS</div>
-                </div>
-            </div>
-            <div class="about-me">
-                <div class="bubble paragraph center-elements activate">About Me</div>
-                <p class="text-note">I am a junior CSE student and a self-taught Full Stack Web Developer highly
-                    tendentious to backend development. For up to two years, I have worked on many experimental
-                    micro-projects, mostly addressing numerical analysis. Also, my latest mega projects were delivering
-                    a portfolio including an image processing RESTful API and deploying an application on AWS.
-                    Exhibiting my skills (Node.js, Python, SQL, React, Express, CI/CD), I'm excited to land a job and
-                    keep the entertaining projects up.</p>
-            </div>
-            <div class="sphere2">
-                <div class="hemisphere">
-                    <div class="skill">CyberSec</div>
-                    <div class="skill">Python</div>
-                    <div class="skill">Linux</div>
-                    <div class="skill">Rust</div>
-                    <div class="skill">Git</div>
-                </div>
-                <div class="hemisphere">
-                    <div class="skill">Tensorflow</div>
-                    <div class="skill">Pandas</div>
-                    <div class="skill">Numpy</div>
-                    <div class="skill">ML/AI</div>
-                    <div class="skill">AWS</div>
-                </div>
-        </section>
-        <section id="experience">
-
-        </section>
-        <section class=""></section>
+      <button
+        data-theme="default"
+        class="theme-celestial"
+        aria-label="Theme toggler button"
+      >
+        <div></div>
+      </button>
+      <section id="home" class="scroll-slide home-section">
+        <div class="show-text">
+          <h1 class="ring-text heading">Hi,<br />I'm AHMED</h1>
+        </div>
+        <div class="show-text">
+          <p class="ring-text text-note">
+            Full-Stack Developer &#8226; Web Designer
+          </p>
+        </div>
+        <div class="show-text">
+          <p class="ring-text paragraph">
+            I'm a full-stack web development freelancer. I am proficient in
+            designing fancy interfaces; server delivery; and database
+            development.
+          </p>
+        </div>
+        <div class="water-wave scroll-slide">
+          <span>Let's Start</span>
+          <span>Let's Start</span>
+          <button
+            onclick="
+              window.location.href =
+                'https\://www.linkedin.com/in/ahmd-abdelaziz/'
+            "
+          >
+            Let's Start
+          </button>
+        </div>
+      </section>
+      <section id="about" class="flex-section">
+        <div class="sphere">
+          <div class="hemisphere">
+            <div class="skill">Typescript</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Express</div>
+            <div class="skill">CI/CD</div>
+            <div class="skill">SQL</div>
+          </div>
+          <div class="hemisphere">
+            <div class="skill">Extensions</div>
+            <div class="skill">Bootstrap</div>
+            <div class="skill">React.js</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+          </div>
+        </div>
+        <div class="about-me">
+          <div class="bubble paragraph center-elements activate">About Me</div>
+          <p class="text-note">
+            I am a junior CSE student and a self-taught Full Stack Web Developer
+            highly tendentious to backend development. For up to two years, I
+            have worked on many experimental micro-projects, mostly addressing
+            numerical analysis. Also, my latest mega projects were delivering a
+            portfolio including an image processing RESTful API and deploying an
+            application on AWS. Exhibiting my skills (Node.js, Python, SQL,
+            React, Express, CI/CD), I'm excited to land a job and keep the
+            entertaining projects up.
+          </p>
+        </div>
+        <div class="sphere2">
+          <div class="hemisphere">
+            <div class="skill">CyberSec</div>
+            <div class="skill">Python</div>
+            <div class="skill">Linux</div>
+            <div class="skill">Rust</div>
+            <div class="skill">Git</div>
+          </div>
+          <div class="hemisphere">
+            <div class="skill">Tensorflow</div>
+            <div class="skill">Pandas</div>
+            <div class="skill">Numpy</div>
+            <div class="skill">ML/AI</div>
+            <div class="skill">AWS</div>
+          </div>
+        </div>
+      </section>
+      <section id="experience"></section>
+      <section class=""></section>
     </main>
 
     <footer id="footer">
-        <nav>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Prog-Jacob/"><img src="./docs/github_logo.svg"
-                            alt="Author's Github profile link" class="navbar-brand svg" width="25px"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.linkedin.com/in/ahmd-abdelaziz/"><img
-                            src="./docs/linkedin_logo.svg" alt="Author's LinkedIn profile link" class="navbar-brand svg"
-                            width="25px"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://codepen.io/Prog_Jacob"><img src="./docs/codepen_logo.svg"
-                            alt="Author's CodePen profile link" class="navbar-brand svg" width="25px"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://lichess.org/@/Prog_Jacob"><img src="./docs/lichess_logo.svg"
-                            alt="Author's Lichess profile link" class="navbar-brand svg" width="25px"></a>
-                </li>
-                <li class="copy-contact-info">
-                    <a class="nav-link contact-logo" href="mailto://ahmed.abdelaziz.gm@gmail.com/"><img
-                            src="./docs/email_logo.svg" alt="Author's email" class="navbar-brand svg" width="25px"></a>
-                    <span class="contact-info">Ahmed.Abdelaziz.GM@gmail.com</span>
-                    <button type="button" class="copy-button svg">
-                        <img src="./docs/copy_icon.svg" alt="Click to copy author's email icon" class="navbar-brand"
-                            width="25px">
-                    </button>
-                </li>
-                <li class="copy-contact-info cci2">
-                    <a class="nav-link contact-logo" href="tel://+201016538863/"><img src="./docs/phone_logo.svg"
-                            alt="Author's phone number" class="navbar-brand svg" width="25px"></a>
-                    <span class="contact-info">+20 101 6538 863</span>
-                    <button type="button" class="copy-button svg">
-                        <img src="./docs/copy_icon.svg" alt="Click to copy author's phone number" class="navbar-brand"
-                            width="25px">
-                    </button>
-                </li>
-            </ul>
-        </nav>
+      <nav>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Prog-Jacob/"
+              ><img
+                src="./docs/github_logo.svg"
+                alt="Author's Github profile link"
+                class="navbar-brand svg"
+                width="25px"
+            /></a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.linkedin.com/in/ahmd-abdelaziz/"
+              ><img
+                src="./docs/linkedin_logo.svg"
+                alt="Author's LinkedIn profile link"
+                class="navbar-brand svg"
+                width="25px"
+            /></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://codepen.io/Prog_Jacob"
+              ><img
+                src="./docs/codepen_logo.svg"
+                alt="Author's CodePen profile link"
+                class="navbar-brand svg"
+                width="25px"
+            /></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://lichess.org/@/Prog_Jacob"
+              ><img
+                src="./docs/lichess_logo.svg"
+                alt="Author's Lichess profile link"
+                class="navbar-brand svg"
+                width="25px"
+            /></a>
+          </li>
+          <li class="copy-contact-info">
+            <a
+              class="nav-link contact-logo"
+              href="mailto://ahmed.abdelaziz.gm@gmail.com/"
+              ><img
+                src="./docs/email_logo.svg"
+                alt="Author's email"
+                class="navbar-brand svg"
+                width="25px"
+            /></a>
+            <span class="contact-info">Ahmed.Abdelaziz.GM@gmail.com</span>
+            <button type="button" class="copy-button svg">
+              <img
+                src="./docs/copy_icon.svg"
+                alt="Click to copy author's email icon"
+                class="navbar-brand"
+                width="25px"
+              />
+            </button>
+          </li>
+          <li class="copy-contact-info cci2">
+            <a class="nav-link contact-logo" href="tel://+201016538863/"
+              ><img
+                src="./docs/phone_logo.svg"
+                alt="Author's phone number"
+                class="navbar-brand svg"
+                width="25px"
+            /></a>
+            <span class="contact-info">+20 101 6538 863</span>
+            <button type="button" class="copy-button svg">
+              <img
+                src="./docs/copy_icon.svg"
+                alt="Click to copy author's phone number"
+                class="navbar-brand"
+                width="25px"
+              />
+            </button>
+          </li>
+        </ul>
+      </nav>
     </footer>
-</body>
-
+  </body>
 </html>
