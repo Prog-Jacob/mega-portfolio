@@ -1,16 +1,24 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Ahmed Abdelaziz Portfolio",
+  "type": "module",
   "scripts": {
-    "build": "npx tsc",
+    "dev": "vite",
+    "build": "vite build",
+    "build:analyze": "vite build --mode analyze && npx vite-bundle-analyzer dist/assets/*.js",
+    "serve": "vite build && vite preview",
+    "preview": "vite preview",
     "test": "jasmine"
   },
   "keywords": [],
   "author": "Prog_Jacob <ahmed.abdelaziz.gm@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^5.2.0"
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
   }
 }
