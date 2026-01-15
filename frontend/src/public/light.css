@@ -1,0 +1,50 @@
+:root {
+  --intro-color: #e9dac1;
+  --intro-color-rgb: 233, 218, 193;
+  --primary-color: #f7ecde;
+  --secondary-color: grey;
+  --tertiary-color: #1f1f1f;
+
+  --main-heading-color-1: #1f1f1f;
+  --main-heading-color-2: #e9dac1;
+  --main-paragraph-color: #1f1f1f;
+  --main-textnote-color: #1f1f1faa;
+
+  --font-selection-color: #1f1f1f;
+  --font-hover-color: #e85e46;
+  --font-cover-color: #e9dac1;
+
+  --focus-filter: invert(100%) brightness(75%);
+  --celestial-shadow: yellow;
+  --theme-image: url(/sun.webp);
+  --star-color: #1f1f1f;
+}
+
+* {
+  cursor: url(/astronaut_icon_light.svg), default;
+  cursor: url(/astronaut_icon_light.svg), pointer !important;
+}
+
+.svg {
+  filter: invert(100%);
+}
+
+.skill {
+  background: var(--intro-color);
+}
+
+.skill > span {
+  background: var(--intro-color);
+}
+
+.bullet {
+  background: brown;
+}
+
+.header-toggler .nav-link {
+  filter: none;
+}
+
+.header-toggler .nav-item {
+  outline: solid 1px var(--tertiary-color);
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://ahmedabdelaziz.space/sitemap.xml
+Crawl-delay: 1
