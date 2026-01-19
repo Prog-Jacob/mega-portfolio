@@ -505,22 +505,26 @@ section:not(#about):target {
 
 .copy-contact-info {
   position: relative;
-  left: -5px;
-  border-radius: 50px;
-  margin-bottom: 10px;
   height: 35px;
-  width: 35px;
+  width: 25px;
   transition: width 0.5s ease-in-out;
   overflow: hidden;
 }
 
 .copy-contact-info:hover {
   box-shadow: 0 0 10px var(--secondary-color);
+  border-radius: 50px;
   width: 290px;
 }
 
 .cci2:hover {
-  width: 175px;
+  width: 180px;
+}
+
+.contact-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .copy-contact-info:hover .contact-logo {
@@ -534,8 +538,7 @@ section:not(#about):target {
   opacity: 1;
 }
 
-.copy-contact-info > *,
-.contact-logo * {
+.copy-contact-info > * {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -543,15 +546,12 @@ section:not(#about):target {
   margin: 0 auto;
 }
 
-.contact-logo {
-  left: 5px;
-}
-
 .contact-info {
   right: 40px;
   color: var(--tertiary-color);
   text-align: center;
   margin-top: 5px;
+  margin-left: 5px;
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s ease-in 0.4s;
@@ -624,6 +624,18 @@ section:not(#about):target {
   overflow: hidden;
 }
 
+.navbar-toggler {
+  border-color: var(--tertiary-color);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f1f1f1' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }
@@ -672,6 +684,10 @@ section:not(#about):target {
 
   .roll-header {
     width: 93px;
+    height: 93px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transform: scale(0.5);
     transition:
       width 0.5s,
@@ -680,6 +696,10 @@ section:not(#about):target {
 
   .roll-header #shrink-toggle {
     animation-iteration-count: 2;
+  }
+
+  .roll-header #shrink-toggle .navbar-brand {
+    margin: 0;
   }
 
   .expand-header #expand-toggle {
@@ -740,10 +760,13 @@ section:not(#about):target {
   #footer nav ul {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   #footer nav ul li {
-    margin: auto;
+    margin: 0;
   }
 }
 
