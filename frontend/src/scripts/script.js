@@ -82,11 +82,19 @@ themeToggler.addEventListener('click', function () {
 document
   .querySelector('.navbar-toggler')
   .addEventListener('click', function (event) {
+    let expandToggle = document.querySelector('#expand-toggle');
+    let shrinkToggle = document.querySelector('#shrink-toggle');
+
     headerClassList.toggle('header-toggler');
+    expandToggle.style.animation = '';
+    shrinkToggle.style.animation = '';
+
     event.stopPropagation();
     document.querySelector('.header-toggler')?.addEventListener(
       'click',
       function (event) {
+        expandToggle.style.animation = 'none';
+        shrinkToggle.style.animation = 'none';
         headerClassList.remove('header-toggler');
       },
       { once: true }
@@ -112,6 +120,9 @@ main.addEventListener(
     if (!headerClassList.contains('roll-header'))
       headerClassList.add('roll-header');
 
+    document.querySelector('#expand-toggle').style.animation = '';
+    document.querySelector('#shrink-toggle').style.animation = '';
+
     clearTimeout(timer);
 
     timer = setTimeout(function () {
@@ -127,6 +138,9 @@ shrinkButton.addEventListener('click', function () {
     headerClassList.remove('roll-header');
   if (!headerClassList.contains('expand-header'))
     headerClassList.add('expand-header');
+
+  document.querySelector('#expand-toggle').style.animation = '';
+  document.querySelector('#shrink-toggle').style.animation = '';
 });
 
 document.addEventListener('DOMContentLoaded', function () {
